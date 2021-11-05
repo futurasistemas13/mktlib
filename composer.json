@@ -1,0 +1,17 @@
+{
+    "name": "futurasistemas13/mktlib",
+    "description": "Biblioteca desenvolvida em PHP para integração com marketplaces",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Futurasistemas13\\Mktlib\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "matheusdacs",
+            "email": "matheusdacs@gmail.com"
+        }
+    ],
+    "require": {}
+}
