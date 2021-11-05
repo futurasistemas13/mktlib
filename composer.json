@@ -4,7 +4,7 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Futurasistemas13\\Mktlib\\": "src/"
+            "futurasistemas13\\mktlib\\": "src/"
         }
     },
     "authors": [

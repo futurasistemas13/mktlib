@@ -1,6 +1,6 @@
 <?php
 
-namespace Futurasistemas13/Mktlib
+namespace futurasistemas13\Mktlib;
 
 class Teste{
     public function showMessage(){
