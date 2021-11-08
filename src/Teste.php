@@ -1,6 +1,6 @@
 <?php
 
-namespace ftrmkt;
+namespace FuturaMkt;
 
 class Teste{
     public function showMessage(){

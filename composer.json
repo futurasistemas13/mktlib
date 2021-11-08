@@ -1,10 +1,10 @@
 {
-    "name": "futuralibs/mktlib",
+    "name": "futuralibs/FuturaMkt",
     "description": "Biblioteca desenvolvida em PHP para integração com marketplaces",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "ftrmkt\\": "src/"
+            "FuturaMkt\\": "src/"
         }
     },
     "authors": [
