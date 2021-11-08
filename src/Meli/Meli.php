@@ -1,11 +1,12 @@
 <?php
 
 
-namespace FuturaMkt\Authentication\Meli;
+namespace FuturaMkt\Meli;
 
 use GuzzleHttp\Client;
+use iPlayer;
 
-class Meli{
+class Meli implements iPlayer{
 
     private function genRefreshToken($data){
         $client = new \Client();

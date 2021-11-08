@@ -1,20 +1,21 @@
 <?php
 
-namespace FuturaMkt\Authentication;
+namespace FuturaMkt;
 
 use FuturaMkt\Authentication\Model;
 use FuturaMkt\Authentication\Model\Meli;
 
-class Auth{
+class Marketplace implements iMarketplace{
     private $marketplace = null;
 
-    function __construct(Meli $pmarketplace)
+    function __construct(iPlayer $pmarketplace)
     {
         $this->marketplace  =  $pmarketplace;
     }
 
     public function authenticate(iConnection $data){
-      echo var_dump($data);
+        $teste = $this->marketplace->genRefreshToken();
+        return $teste;
     }
 
 }
