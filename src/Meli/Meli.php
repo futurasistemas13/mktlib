@@ -4,7 +4,7 @@
 namespace FuturaMkt\Meli;
 
 use GuzzleHttp\Client;
-use iPlayer;
+use FuturaMkt\iPlayer;
 
 class Meli implements iPlayer{
 
