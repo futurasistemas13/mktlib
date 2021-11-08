@@ -1,5 +1,5 @@
 {
-    "name": "futuralibs/FuturaMkt",
+    "name": "futuralibs/futuramkt",
     "description": "Biblioteca desenvolvida em PHP para integração com marketplaces",
     "type": "library",
     "autoload": {
