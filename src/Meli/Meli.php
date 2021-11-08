@@ -8,7 +8,7 @@ use FuturaMkt\iPlayer;
 
 class Meli implements iPlayer{
 
-    private function genRefreshToken($data){
+    public function genRefreshToken($data){
         $client = new \Client();
         $response = $client->request('POST', 'https://api.github.com/repos/guzzle/guzzle', [
             'form_params'       => [
@@ -21,7 +21,7 @@ class Meli implements iPlayer{
         return $response;
     }
 
-    private function refreshToken(){
+    public function refreshToken(){
         $client = new \Client();
         $response = $client->request('POST', 'https://api.github.com/repos/guzzle/guzzle', [
             'form_params'       => [
