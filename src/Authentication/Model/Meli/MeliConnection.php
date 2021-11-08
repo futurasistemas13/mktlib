@@ -2,7 +2,9 @@
 
 namespace FuturaMkt\Authentication\Model\Meli;
 
-class MeliConnection implements iConnection{
+use FuturaMkt\Authentication\Model;
+
+class MeliConnection extends Connection{
 
     private $client_id     = "";
     private $client_secret = "";

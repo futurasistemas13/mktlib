@@ -3,6 +3,6 @@
 
 namespace FuturaMkt\Authentication\Model;
 
-interface iConnection{
+class Connection{
 
 }

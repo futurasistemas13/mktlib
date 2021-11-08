@@ -4,6 +4,7 @@ namespace FuturaMkt;
 
 use FuturaMkt\Authentication\Model;
 use FuturaMkt\Authentication\Model\Meli;
+use FuturaMkt\iPlayer;
 
 class Marketplace implements iMarketplace{
     private $marketplace = null;
