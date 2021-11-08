@@ -1,7 +1,7 @@
 <?php
 
 
-namespace FuturaMkt/Authentication/Meli;
+namespace FuturaMkt\Authentication\Meli;
 
 use GuzzleHttp\Client;
 

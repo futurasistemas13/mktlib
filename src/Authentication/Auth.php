@@ -1,6 +1,6 @@
 <?php
 
-namespace ftrmkt/Authentication;
+namespace FuturaMkt\Authentication;
 
 class Auth{
 
