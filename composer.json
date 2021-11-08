@@ -4,7 +4,7 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "futurasistemas13\\Mktlib\\": "src/"
+            "ftrmkt\\": "src/"
         }
     },
     "authors": [
@@ -13,5 +13,7 @@
             "email": "matheusdacs@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    }
 }
