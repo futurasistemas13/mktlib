@@ -4,7 +4,7 @@
 namespace FuturaMkt\Meli;
 
 use FuturaMkt\Authentication\MktConnection;
-use FuturaMkt\Entity\Produto;
+use FuturaMkt\Entity\Produto\Produto;
 use FuturaMkt\Marketplace;
 
 class Meli extends Marketplace{
