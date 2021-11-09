@@ -2,9 +2,9 @@
 
 namespace FuturaMkt\Authentication\Model\Meli;
 
-use FuturaMkt\Authentication\Model;
+use FuturaMkt\Authentication\Model\MktConnection;
 
-class MeliConnection extends Connection{
+class MeliConnection extends MktConnection{
 
     private $client_id     = "";
     private $client_secret = "";

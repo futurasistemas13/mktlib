@@ -3,6 +3,6 @@
 
 namespace FuturaMkt\Authentication\Model;
 
-class Connection{
+class MktConnection{
 
 }
