@@ -22,11 +22,11 @@ class Meli implements iMarketplace{
             ]]);
         $jsonResp = json_decode($response->getBody()->getContents());
 
-        if (isset($jsonResp['access_token'])){
-            $data->setAccessToken($jsonResp['access_token']);
+        if (isset($jsonResp->access_token)){
+            $data->setAccessToken($jsonResp->access_token);
         }
-        if (isset($jsonResp['refresh_token'])){
-            $data->setRefreshToken($jsonResp['access_token']);
+        if (isset($jsonResp->refresh_token)){
+            $data->setRefreshToken($jsonResp->refresh_token);
         }
         return $response;
     }
