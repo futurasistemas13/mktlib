@@ -4,7 +4,6 @@
 namespace FuturaMkt\Meli;
 
 use FuturaMkt\Authentication\Model\MktConnection;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
@@ -17,12 +16,8 @@ class MeliAuthUtil{
         return $this->dataAuth;
     }
 
-    public function genToken(MktConnection $data) : MktConnection{
-
-        if ($data->getAccessToken() != ''){
-            $this->dataAuth = $data;
-            return $data;
-        }
+    public function genToken(MktConnection $data) : MktConnection
+    {
         $client   = new Client();
         $response = null;
         try {
@@ -53,7 +48,8 @@ class MeliAuthUtil{
         return $data;
     }
 
-    public function refreshToken(MktConnection $data): MktConnection{
+    public function refreshToken(MktConnection $data): MktConnection
+    {
         $client   = new Client();
         $response = null;
         try {

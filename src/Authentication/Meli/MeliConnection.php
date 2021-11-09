@@ -12,6 +12,7 @@ class MeliConnection extends MktConnection{
     private $redirect_uri  = "";
     private $access_token  = "";
     private $refresh_token = "";
+    private $token_expire  = 0;
 
     /**
      * @return string
@@ -107,6 +108,22 @@ class MeliConnection extends MktConnection{
     public function setRefreshToken(string $refresh_token): void
     {
         $this->refresh_token = $refresh_token;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTokenExpire(): int
+    {
+        return $this->token_expire;
+    }
+
+    /**
+     * @param int $token_expire
+     */
+    public function setTokenExpire(int $token_expire): void
+    {
+        $this->token_expire = $token_expire;
     }
 
 

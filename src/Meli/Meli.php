@@ -20,7 +20,15 @@ class Meli extends Marketplace{
 
     public function authenticate(MktConnection $data): MktConnection
     {
-        return $this->meliAuth->genToken($data);
+        if( ($data->getTokenExpire() !== 0) &&
+            ($data->getAccessToken())       &&
+            ($data->getRefreshToken())      &&
+            ($data->getTokenExpire() < time() + 1) )
+        {
+            return $this->meliAuth->refreshToken($data);
+        }else{
+            return $this->meliAuth->getAccessToken($data);
+        }
     }
 
     public function createProduct(Produto $product){

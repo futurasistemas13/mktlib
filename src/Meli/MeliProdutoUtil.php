@@ -17,8 +17,11 @@ class MeliProdutoUtil {
         );
 
         $client   = new Client([
-            'headers' => ['Content-Type' => 'application/json'],
-            'Bearer'  => $auth_code
+            'headers' => [
+                'Content-Type'   => 'application/json',
+                'Authorization'  => 'Bearer ' . $auth_code
+            ],
+
         ]);
 
         try {
@@ -26,16 +29,17 @@ class MeliProdutoUtil {
                 'body' => json_encode($produto)
             ]);
         }catch (ClientException $e){
-            //
+            //throw new ClientException($e);
+            echo $e->getMessage();
         }
     }
 
     private function convertAttr(ProdutoAttributes $attributes){
         $return = array();
-        foreach($attributes as $attr){
+        foreach($attributes->get('ficha_tecnica') as $attr){
             $return[] = array(
-              'id'         => $attr->get()->getName(),
-              'value_name' => $attr->get()->getValue()
+                'id'         => $attr->getName(),
+                'value_name' => $attr->getValue()
             );
         }
         return $return;
