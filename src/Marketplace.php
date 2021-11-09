@@ -16,7 +16,7 @@ class Marketplace implements iMarketplace{
     }
 
     public function authenticate(MktConnection $data){
-        $teste = $this->marketplace->genRefreshToken();
+        $teste = $this->marketplace->genRefreshToken($data);
         return $teste;
     }
 
