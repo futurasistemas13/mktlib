@@ -10,6 +10,8 @@ class MeliConnection extends MktConnection{
     private $client_secret = "";
     private $code          = "";
     private $redirect_uri  = "";
+    private $access_token  = "";
+    private $refresh_token = "";
 
     /**
      * @return string
@@ -73,6 +75,38 @@ class MeliConnection extends MktConnection{
     public function setRedirectUri(string $redirect_uri): void
     {
         $this->redirect_uri = $redirect_uri;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessToken(): string
+    {
+        return $this->access_token;
+    }
+
+    /**
+     * @param string $access_token
+     */
+    public function setAccessToken(string $access_token): void
+    {
+        $this->access_token = $access_token;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRefreshToken(): string
+    {
+        return $this->refresh_token;
+    }
+
+    /**
+     * @param string $refresh_token
+     */
+    public function setRefreshToken(string $refresh_token): void
+    {
+        $this->refresh_token = $refresh_token;
     }
 
 
