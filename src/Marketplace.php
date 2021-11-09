@@ -8,12 +8,12 @@ use FuturaMkt\iPlayer;
 use FuturaMkt\Authentication\Model\MktConnection;
 
 class Marketplace implements iMarketplace{
-    private $marketplace = null;
+    //private $marketplace = null;
 
-    function __construct(iMarketplace $pmarketplace)
-    {
-        $this->marketplace  =  $pmarketplace;
-    }
+    //function __construct(/*iMarketplace $pmarketplace*/)
+    //{
+        //$this->marketplace  =  $pmarketplace;
+    //}
 
     public function authenticate(MktConnection $data){
         //$teste = $this->marketplace->genRefreshToken($data);
