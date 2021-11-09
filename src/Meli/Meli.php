@@ -12,7 +12,7 @@ class Meli implements iMarketplace{
 
     private function genRefreshToken(MktConnection $data){
         $client = new Client();
-        $response = $client->request('POST', 'https://api.github.com/repos/guzzle/guzzle', [
+        $response = $client->request('POST', 'https://api.mercadolibre.com/oauth/token', [
             'form_params'       => [
                 'grant_type'    => 'authorization_code',
                 'client_id'     => $data->getClientId(),
@@ -33,7 +33,7 @@ class Meli implements iMarketplace{
 
     private function refreshToken(MktConnection $data){
         $client = new Client();
-        $response = $client->request('POST', 'https://api.github.com/repos/guzzle/guzzle', [
+        $response = $client->request('POST', 'https://api.mercadolibre.com/oauth/token', [
             'form_params'       => [
                 'grant_type'    => 'refresh_token',
                 'client_id'     => $data->getClientId(),
