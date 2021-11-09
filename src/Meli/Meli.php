@@ -24,6 +24,7 @@ class Meli implements iMarketplace{
 
         if (isset($jsonResp->access_token)){
             $data->setAccessToken($jsonResp->access_token);
+            //
         }
         if (isset($jsonResp->refresh_token)){
             $data->setRefreshToken($jsonResp->refresh_token);
