@@ -18,6 +18,11 @@ class MeliAuthUtil{
     }
 
     public function genToken(MktConnection $data) : MktConnection{
+
+        if ($data->getAccessToken() != ''){
+            $this->dataAuth = $data;
+            return $data;
+        }
         $client   = new Client();
         $response = null;
         try {
