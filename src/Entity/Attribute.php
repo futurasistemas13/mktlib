@@ -7,7 +7,7 @@ class Attribute{
     private $name    = "";
     private $value  = "";
 
-    function __construct(String $name, String $value)
+    function __construct(String $name = '', String $value = '')
     {
          $this->name  = $name;
          $this->value = $value;
