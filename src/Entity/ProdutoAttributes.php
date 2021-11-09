@@ -9,18 +9,18 @@ class ProdutoAttributes{
 
     function __construct()
     {
-
     }
 
-    function add($group, String $name, String $value) : Attribute
+    function add($group, String $name, String $value) : ProdutoAttributes
     {
         $attr = new Attribute();
         $attr->setName($name);
         $attr->setValue($value);
-        return $this->attribute[$group][] = $attr;
+        $this->attribute[$group][] = $attr;
+        return $this;
     }
 
-    function get($group) : Attribute
+    function get($group)
     {
         return $this->attribute[$group];
     }
