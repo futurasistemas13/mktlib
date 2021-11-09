@@ -4,7 +4,7 @@ namespace FuturaMkt;
 
 use FuturaMkt\Authentication;
 use FuturaMkt\Authentication\Meli;
-use FuturaMkt\Entity\Produto;
+use FuturaMkt\Entity\Produto\Produto;
 use FuturaMkt\Authentication\MktConnection;
 
 class Marketplace implements iMarketplace{
