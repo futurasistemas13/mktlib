@@ -1,8 +1,8 @@
 <?php
 
-namespace FuturaMkt\Authentication\Model\Meli;
+namespace FuturaMkt\Authentication\Meli;
 
-use FuturaMkt\Authentication\Model\MktConnection;
+use FuturaMkt\Authentication\MktConnection;
 
 class MeliConnection extends MktConnection{
 

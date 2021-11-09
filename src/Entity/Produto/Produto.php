@@ -1,9 +1,9 @@
 <?php
 
 
-namespace FuturaMkt\Entity;
+namespace FuturaMkt\Entity\Produto;
 
-use FuturaMkt\Entity\ProdutoAttributes;
+use FuturaMkt\Entity\Produto\ProdutoAttributes;
 
 class Produto{
     private $title              = "";
@@ -60,17 +60,17 @@ class Produto{
     }
 
     /**
-     * @return \FuturaMkt\Entity\ProdutoAttributes
+     * @return \FuturaMkt\Entity\Produto\ProdutoAttributes
      */
-    public function getAttributes(): \FuturaMkt\Entity\ProdutoAttributes
+    public function getAttributes(): \FuturaMkt\Entity\Produto\ProdutoAttributes
     {
         return $this->Attributes;
     }
 
     /**
-     * @param \FuturaMkt\Entity\ProdutoAttributes $Attributes
+     * @param \FuturaMkt\Entity\Produto\ProdutoAttributes $Attributes
      */
-    public function setAttributes(\FuturaMkt\Entity\ProdutoAttributes $Attributes): void
+    public function setAttributes(\FuturaMkt\Entity\Produto\ProdutoAttributes $Attributes): void
     {
         $this->Attributes = $Attributes;
     }

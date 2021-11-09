@@ -1,6 +1,6 @@
 <?php
 
-namespace FuturaMkt\Entity;
+namespace FuturaMkt\Entity\Produto;
 
 use FuturaMkt\Entity\Attribute;
 

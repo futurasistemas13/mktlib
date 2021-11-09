@@ -2,7 +2,7 @@
 
 namespace FuturaMkt;
 
-use FuturaMkt\Authentication\Model\MktConnection;
+use FuturaMkt\Authentication\MktConnection;
 use FuturaMkt\Entity\Produto;
 
 interface iMarketplace{

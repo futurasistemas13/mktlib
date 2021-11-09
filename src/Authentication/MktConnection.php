@@ -1,7 +1,7 @@
 <?php
 
 
-namespace FuturaMkt\Authentication\Model;
+namespace FuturaMkt\Authentication;
 
 class MktConnection{
 

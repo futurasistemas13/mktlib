@@ -3,7 +3,7 @@
 
 namespace FuturaMkt\Meli;
 
-use FuturaMkt\Authentication\Model\MktConnection;
+use FuturaMkt\Authentication\MktConnection;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
@@ -24,7 +24,7 @@ class MeliAuthUtil{
             $response = $client->request('POST', 'https://api.mercadolibre.com/oauth/token', [
                 'form_params' => [
                     'grant_type'    => 'authorization_code',
-                    'client_id'     => $data->ggetAttributesetClientId(),
+                    'client_id'     => $data->getClientId(),
                     'client_secret' => $data->getClientSecret(),
                     'code'          => $data->getCode(),
                     'redirect_uri'  => $data->getRedirectUri()

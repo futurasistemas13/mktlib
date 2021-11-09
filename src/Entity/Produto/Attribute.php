@@ -1,7 +1,7 @@
 <?php
 
 
-namespace FuturaMkt\Entity;
+namespace FuturaMkt\Entity\Produto;
 
 class Attribute{
     private $name    = "";

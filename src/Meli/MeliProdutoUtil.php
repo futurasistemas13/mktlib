@@ -2,8 +2,8 @@
 
 namespace FuturaMkt\Meli;
 
-use FuturaMkt\Entity\Produto;
-use FuturaMkt\Entity\ProdutoAttributes;
+use FuturaMkt\Entity\Produto\Produto;
+use FuturaMkt\Entity\Produto\ProdutoAttributes;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
@@ -21,7 +21,6 @@ class MeliProdutoUtil {
                 'Content-Type'   => 'application/json',
                 'Authorization'  => 'Bearer ' . $auth_code
             ],
-
         ]);
 
         try {
@@ -30,7 +29,7 @@ class MeliProdutoUtil {
             ]);
         }catch (ClientException $e){
             //throw new ClientException($e);
-            echo $e->getMessage();
+            var_dump($e->getResponse());
         }
     }
 
@@ -44,6 +43,4 @@ class MeliProdutoUtil {
         }
         return $return;
     }
-
-
 }

@@ -3,7 +3,7 @@
 
 namespace FuturaMkt\Meli;
 
-use FuturaMkt\Authentication\Model\MktConnection;
+use FuturaMkt\Authentication\MktConnection;
 use FuturaMkt\Entity\Produto;
 use FuturaMkt\Marketplace;
 
@@ -27,7 +27,7 @@ class Meli extends Marketplace{
         {
             return $this->meliAuth->refreshToken($data);
         }else{
-            return $this->meliAuth->getAccessToken($data);
+            return $this->meliAuth->genToken($data);
         }
     }
 
