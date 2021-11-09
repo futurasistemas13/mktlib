@@ -2,7 +2,7 @@
 
 namespace FuturaMkt\Entity\Produto;
 
-use FuturaMkt\Entity\Attribute;
+use FuturaMkt\Entity\Produto\Attribute;
 
 class ProdutoAttributes{
     private $attribute;
