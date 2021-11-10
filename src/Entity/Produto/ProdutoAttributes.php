@@ -2,8 +2,6 @@
 
 namespace FuturaMkt\Entity\Produto;
 
-use FuturaMkt\Entity\Produto\Attribute;
-
 class ProdutoAttributes{
     private $attribute;
 
@@ -11,7 +9,7 @@ class ProdutoAttributes{
     {
     }
 
-    function add($group, String $name, String $value) : ProdutoAttributes
+    function add($group, String $name, String $value)
     {
         $attr = new Attribute();
         $attr->setName($name);

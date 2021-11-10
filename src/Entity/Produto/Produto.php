@@ -3,7 +3,6 @@
 
 namespace FuturaMkt\Entity\Produto;
 
-use FuturaMkt\Entity\Produto\ProdutoAttributes;
 use FuturaMkt\Type\TypeMoeda;
 use FuturaMkt\Type\Product\TypeProductCondition;
 
@@ -65,17 +64,17 @@ class Produto{
     }
 
     /**
-     * @return \FuturaMkt\Entity\Produto\ProdutoAttributes
+     * @return ProdutoAttributes
      */
-    public function getAttributes(): \FuturaMkt\Entity\Produto\ProdutoAttributes
+    public function getAttributes(): ProdutoAttributes
     {
         return $this->Attributes;
     }
 
     /**
-     * @param \FuturaMkt\Entity\Produto\ProdutoAttributes $Attributes
+     * @param ProdutoAttributes $Attributes
      */
-    public function setAttributes(\FuturaMkt\Entity\Produto\ProdutoAttributes $Attributes): void
+    public function setAttributes(ProdutoAttributes $Attributes): void
     {
         $this->Attributes = $Attributes;
     }

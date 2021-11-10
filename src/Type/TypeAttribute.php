@@ -2,7 +2,7 @@
 
 namespace FuturaMkt\Type;
 
-enum TypeAttribute {
-    case DefaultAttributes;
-    case Datasheet;
+enum TypeAttribute: String {
+    case DefaultAttributes = 'DefaultAttributes';
+    case Datasheet         = 'Datasheet';
 }
