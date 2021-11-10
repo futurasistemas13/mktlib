@@ -25,7 +25,7 @@ class MeliProdutoUtil {
         );
 
         $defaultAttributes = MeliFuncUtils::convertDefaultAttr($product->getAttributes());
-        $produto           = array_combine($produto, $defaultAttributes);
+        $produto           = array_merge_recursive($produto, $defaultAttributes);
 
         $client   = new Client([
             'headers' => [
