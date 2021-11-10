@@ -4,12 +4,17 @@
 namespace FuturaMkt\Entity\Produto;
 
 use FuturaMkt\Entity\Produto\ProdutoAttributes;
+use FuturaMkt\Type\TypeMoeda;
+use FuturaMkt\Type\Product\TypeProductCondition;
 
 class Produto{
-    private $title              = "";
-    private $category_id        = "";
-    private $price              = 0;
+    private String $title              = "";
+    private String $category_id        = "";
+    private float $price               = 0;
+    private TypeMoeda $moeda           = TypeMoeda::BRL;
+    private TypeProductCondition $condition;
     private ProdutoAttributes $Attributes;
+    private array $productImage;
 
     /**
      * @return string
@@ -44,17 +49,17 @@ class Produto{
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getPrice(): int
+    public function getPrice(): float
     {
         return $this->price;
     }
 
     /**
-     * @param int $price
+     * @param float $price
      */
-    public function setPrice(int $price): void
+    public function setPrice(float $price): void
     {
         $this->price = $price;
     }
@@ -73,6 +78,60 @@ class Produto{
     public function setAttributes(\FuturaMkt\Entity\Produto\ProdutoAttributes $Attributes): void
     {
         $this->Attributes = $Attributes;
+    }
+
+    /**
+     * @return TypeMoeda
+     */
+    public function getMoeda(): TypeMoeda
+    {
+        return $this->moeda;
+    }
+
+    /**
+     * @param TypeMoeda $moeda
+     */
+    public function setMoeda(TypeMoeda $moeda): void
+    {
+        $this->moeda = $moeda;
+    }
+
+    /**
+     * @return TypeProductCondition
+     */
+    public function getCondition(): TypeProductCondition
+    {
+        return $this->condition;
+    }
+
+    /**
+     * @param TypeProductCondition $condition
+     */
+    public function setCondition(TypeProductCondition $condition): void
+    {
+        $this->condition = $condition;
+    }
+
+    /**
+     * @return array
+     */
+    public function getImage(): array
+    {
+        return $this->productImage;
+    }
+
+    /**
+     * @param String $Image
+     * @param String $mktImageCode
+     */
+    public function setImage(String $Image, String $mktImageCode):  Produto
+    {
+        $productImage = new ProductImage();
+        $productImage->setImageLink($Image);
+        $productImage->setMktCode($mktImageCode);
+        $this->productImage[] = $productImage;
+
+        return $this;
     }
 
 }

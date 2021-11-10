@@ -20,7 +20,7 @@ class ProdutoAttributes{
         return $this;
     }
 
-    function get($group)
+    function get($group): array
     {
         return $this->attribute[$group];
     }

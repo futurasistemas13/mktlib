@@ -1,8 +1,8 @@
 <?php
 
-namespace FuturaMkt;
+namespace FuturaMkt\Service;
 
-use FuturaMkt\Authentication\MktConnection;
+use FuturaMkt\Entity\Authentication\MktConnection;
 use FuturaMkt\Entity\Produto\Produto;
 
 interface iMarketplace{

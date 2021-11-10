@@ -4,8 +4,8 @@
 namespace FuturaMkt\Entity\Produto;
 
 class Attribute{
-    private $name    = "";
-    private $value  = "";
+    private String $name   = "";
+    private String $value  = "";
 
     function __construct(String $name = '', String $value = '')
     {

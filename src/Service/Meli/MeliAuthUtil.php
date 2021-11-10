@@ -1,9 +1,9 @@
 <?php
 
 
-namespace FuturaMkt\Meli;
+namespace FuturaMkt\Service\Meli;
 
-use FuturaMkt\Authentication\MktConnection;
+use FuturaMkt\Entity\Authentication\MktConnection;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
@@ -31,6 +31,7 @@ class MeliAuthUtil{
                 ]]);
         }catch (ClientException $e){
             //parent::setLastError($e->getMessage(), $response->getStatusCode());
+            //deu certo de primeira!!!kkkk
 
             $this->dataAuth = $data;
             return $data;

@@ -1,11 +1,11 @@
 <?php
 
-namespace FuturaMkt;
+namespace FuturaMkt\Service;
 
-use FuturaMkt\Authentication;
-use FuturaMkt\Authentication\Meli;
+use FuturaMkt\Entity\Authentication;
+use FuturaMkt\Entity\Authentication\Meli;
 use FuturaMkt\Entity\Produto\Produto;
-use FuturaMkt\Authentication\MktConnection;
+use FuturaMkt\Entity\Authentication\MktConnection;
 
 class Marketplace implements iMarketplace{
 

@@ -1,11 +1,11 @@
 <?php
 
 
-namespace FuturaMkt\Meli;
+namespace FuturaMkt\Service\Meli;
 
-use FuturaMkt\Authentication\MktConnection;
+use FuturaMkt\Entity\Authentication\MktConnection;
 use FuturaMkt\Entity\Produto\Produto;
-use FuturaMkt\Marketplace;
+use FuturaMkt\Service\Marketplace;
 
 class Meli extends Marketplace{
 
