@@ -8,6 +8,7 @@ use FuturaMkt\Type\Product\TypeProductCondition;
 
 
 class Produto{
+    private String $mktPlaceId         = "";
     private String $title              = "";
     private String $category_id        = "";
     private float $price               = 0;
@@ -16,6 +17,9 @@ class Produto{
     private TypeProductCondition $condition;
     private ProdutoAttributes $Attributes;
     private array $productImage;
+    private String $description = "";
+
+
     /**
      * @return string
      */
@@ -155,6 +159,38 @@ class Produto{
     {
         $this->quantity = $quantity;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMktPlaceId(): string
+    {
+        return $this->mktPlaceId;
+    }
+
+    /**
+     * @param string $mktPlaceId
+     */
+    public function setMktPlaceId(string $mktPlaceId): void
+    {
+        $this->mktPlaceId = $mktPlaceId;
     }
 
 }
