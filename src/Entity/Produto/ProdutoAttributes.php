@@ -2,6 +2,8 @@
 
 namespace FuturaMkt\Entity\Produto;
 
+use FuturaMkt\Type\TypeAttribute;
+
 class ProdutoAttributes{
     private $attribute;
 
@@ -9,18 +11,18 @@ class ProdutoAttributes{
     {
     }
 
-    function add($group, String $name, String $value)
+    function add(TypeAttribute $group, String $name, String $value)
     {
         $attr = new Attribute();
         $attr->setName($name);
         $attr->setValue($value);
-        $this->attribute[$group][] = $attr;
+        $this->attribute[$group->value][] = $attr;
         return $this;
     }
 
-    function get($group): array
+    function get(TypeAttribute $group): array
     {
-        return $this->attribute[$group];
+        return $this->attribute[$group->value];
     }
 
 

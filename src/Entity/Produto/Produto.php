@@ -6,6 +6,7 @@ namespace FuturaMkt\Entity\Produto;
 use FuturaMkt\Type\TypeMoeda;
 use FuturaMkt\Type\Product\TypeProductCondition;
 
+
 class Produto{
     private String $title              = "";
     private String $category_id        = "";
@@ -14,6 +15,7 @@ class Produto{
     private TypeProductCondition $condition;
     private ProdutoAttributes $Attributes;
     private array $productImage;
+
 
     /**
      * @return string

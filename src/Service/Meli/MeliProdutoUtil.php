@@ -6,6 +6,7 @@ use FuturaMkt\Entity\Produto\Produto;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
+
 class MeliProdutoUtil {
 
     function addProduct(Produto $product, String $auth_code){
