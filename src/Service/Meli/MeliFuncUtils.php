@@ -25,9 +25,9 @@ class MeliFuncUtils{
     {
         $return = array();
         foreach($attributes->get(TypeAttribute::DefaultAttributes) as $attr){
-            $return[] = array(
-                $attr->getName() => $attr->getValue(),
-            );
+            $aux = array();
+            $aux[$attr->getName()] = $attr->getValue();
+            $return = array_merge($return, $aux);
         }
         return $return;
     }

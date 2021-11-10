@@ -11,6 +11,7 @@ class Produto{
     private String $title              = "";
     private String $category_id        = "";
     private float $price               = 0;
+    private Int $quantity              = 0;
     private TypeMoeda $moeda           = TypeMoeda::BRL;
     private TypeProductCondition $condition;
     private ProdutoAttributes $Attributes;
@@ -133,6 +134,22 @@ class Produto{
         $this->productImage[] = $productImage;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param int $quantity
+     */
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
     }
 
 }

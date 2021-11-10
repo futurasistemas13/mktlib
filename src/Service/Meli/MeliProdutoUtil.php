@@ -13,12 +13,13 @@ class MeliProdutoUtil {
         $produto = array(
             "title"             => $product->getTitle(),
             "category_id"       => $product->getCategoryId(),
-            "currency_id"       => $product->getMoeda(),
-            "condition"         => $product->getCondition(),
+            "currency_id"       => $product->getMoeda()->value,
+            "condition"         => $product->getCondition()->value,
 
             //start - check for the grid
-            "price"            => $product->getPrice(),
-            "pictures"         => MeliFuncUtils::convertPicture($product->getImage()),
+            "price"               => $product->getPrice(),
+            "pictures"            => MeliFuncUtils::convertPicture($product->getImage()),
+            "available_quantity"  => $product->getQuantity(),
             //end - check for the grid
             "attributes"       => MeliFuncUtils::convertAttr($product->getAttributes())
         );

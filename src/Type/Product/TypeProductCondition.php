@@ -2,7 +2,7 @@
 
 namespace FuturaMkt\Type\Product;
 
-enum TypeProductCondition {
-    case New;
-    case Used;
+enum TypeProductCondition: String {
+    case New  = 'new';
+    case Used = 'used';
 }
