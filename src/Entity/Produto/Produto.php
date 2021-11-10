@@ -16,8 +16,6 @@ class Produto{
     private TypeProductCondition $condition;
     private ProdutoAttributes $Attributes;
     private array $productImage;
-
-
     /**
      * @return string
      */
@@ -29,9 +27,10 @@ class Produto{
     /**
      * @param string $title
      */
-    public function setTitle(string $title): void
+    public function setTitle(string $title)
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -45,9 +44,10 @@ class Produto{
     /**
      * @param string $category_id
      */
-    public function setCategoryId(string $category_id): void
+    public function setCategoryId(string $category_id)
     {
         $this->category_id = $category_id;
+        return $this;
     }
 
     /**
@@ -61,9 +61,10 @@ class Produto{
     /**
      * @param float $price
      */
-    public function setPrice(float $price): void
+    public function setPrice(float $price)
     {
         $this->price = $price;
+        return $this;
     }
 
     /**
@@ -77,9 +78,10 @@ class Produto{
     /**
      * @param ProdutoAttributes $Attributes
      */
-    public function setAttributes(ProdutoAttributes $Attributes): void
+    public function setAttributes(ProdutoAttributes $Attributes)
     {
         $this->Attributes = $Attributes;
+        return $this;
     }
 
     /**
@@ -93,9 +95,10 @@ class Produto{
     /**
      * @param TypeMoeda $moeda
      */
-    public function setMoeda(TypeMoeda $moeda): void
+    public function setMoeda(TypeMoeda $moeda)
     {
         $this->moeda = $moeda;
+        return $this;
     }
 
     /**
@@ -109,9 +112,10 @@ class Produto{
     /**
      * @param TypeProductCondition $condition
      */
-    public function setCondition(TypeProductCondition $condition): void
+    public function setCondition(TypeProductCondition $condition)
     {
         $this->condition = $condition;
+        return $this;
     }
 
     /**
@@ -126,7 +130,7 @@ class Produto{
      * @param String $Image
      * @param String $mktImageCode
      */
-    public function setImage(String $Image, String $mktImageCode = ''):  Produto
+    public function setImage(String $Image, String $mktImageCode = '')
     {
         $productImage = new ProductImage();
         $productImage->setImageLink($Image);
@@ -147,9 +151,10 @@ class Produto{
     /**
      * @param int $quantity
      */
-    public function setQuantity(int $quantity): void
+    public function setQuantity(int $quantity)
     {
         $this->quantity = $quantity;
+        return $this;
     }
 
 }

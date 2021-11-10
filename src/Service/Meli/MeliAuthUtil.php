@@ -31,8 +31,6 @@ class MeliAuthUtil{
                 ]]);
         }catch (ClientException $e){
             //parent::setLastError($e->getMessage(), $response->getStatusCode());
-            //deu certo de primeira!!!kkkk
-
             $this->dataAuth = $data;
             return $data;
         }
