@@ -124,7 +124,7 @@ class Produto{
      * @param String $Image
      * @param String $mktImageCode
      */
-    public function setImage(String $Image, String $mktImageCode):  Produto
+    public function setImage(String $Image, String $mktImageCode = ''):  Produto
     {
         $productImage = new ProductImage();
         $productImage->setImageLink($Image);
