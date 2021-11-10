@@ -22,7 +22,6 @@ class MeliProdutoUtil {
             "available_quantity"  => $product->getQuantity(),
             //end - check for the grid
             "attributes"          => MeliFuncUtils::convertAttr($product->getAttributes()),
-            "description"         => array('plain_text' => $product->getDescription()),
         );
 
         $defaultAttributes = MeliFuncUtils::convertDefaultAttr($product->getAttributes());
@@ -43,10 +42,9 @@ class MeliProdutoUtil {
             $rest_product = json_decode($response->getBody()->getContents());
             $product->setMktPlaceId($rest_product->id);
 
-            //$response = $client->request('POST', 'https://api.mercadolibre.com/items' . $product->getMktPlaceId(), [
-            //    'body' => json_encode($produto->)
-            //]);
-
+            $response = $client->request('POST', 'https://api.mercadolibre.com/items' . $product->getMktPlaceId() . '/description?api_version=2', [
+                'body' => json_encode(array('plain_text' => $product->getDescription())),
+            ]);
 
         }catch (ClientException $e){
             throw $e;
