@@ -31,7 +31,7 @@ class Meli extends Marketplace{
         }
     }
 
-    public function createProduct(Produto $product){
+    public function setProduct(Produto $product){
         $this->productUtil->addProduct($product, $this->meliAuth->getAuthData()->getAccessToken());
     }
 

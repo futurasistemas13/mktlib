@@ -16,7 +16,7 @@ class Marketplace implements iMarketplace{
         //
     }
 
-    public function createProduct(Produto $product){
+    public function setProduct(Produto $product){
         //
     }
 

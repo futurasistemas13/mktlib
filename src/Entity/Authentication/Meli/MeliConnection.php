@@ -25,9 +25,10 @@ class MeliConnection extends MktConnection{
     /**
      * @param string $client_id
      */
-    public function setClientId(string $client_id): void
+    public function setClientId(string $client_id)
     {
         $this->client_id = $client_id;
+        return $this;
     }
 
     /**
@@ -41,9 +42,10 @@ class MeliConnection extends MktConnection{
     /**
      * @param string $client_secret
      */
-    public function setClientSecret(string $client_secret): void
+    public function setClientSecret(string $client_secret)
     {
         $this->client_secret = $client_secret;
+        return $this;
     }
 
     /**
@@ -57,9 +59,10 @@ class MeliConnection extends MktConnection{
     /**
      * @param string $code
      */
-    public function setCode(string $code): void
+    public function setCode(string $code)
     {
         $this->code = $code;
+        return $this;
     }
 
     /**
@@ -73,9 +76,10 @@ class MeliConnection extends MktConnection{
     /**
      * @param string $redirect_uri
      */
-    public function setRedirectUri(string $redirect_uri): void
+    public function setRedirectUri(string $redirect_uri)
     {
         $this->redirect_uri = $redirect_uri;
+        return $this;
     }
 
     /**
@@ -89,9 +93,10 @@ class MeliConnection extends MktConnection{
     /**
      * @param string $access_token
      */
-    public function setAccessToken(string $access_token): void
+    public function setAccessToken(string $access_token)
     {
         $this->access_token = $access_token;
+        return $this;
     }
 
     /**
@@ -105,9 +110,10 @@ class MeliConnection extends MktConnection{
     /**
      * @param string $refresh_token
      */
-    public function setRefreshToken(string $refresh_token): void
+    public function setRefreshToken(string $refresh_token)
     {
         $this->refresh_token = $refresh_token;
+        return $this;
     }
 
     /**
@@ -121,9 +127,10 @@ class MeliConnection extends MktConnection{
     /**
      * @param int $token_expire
      */
-    public function setTokenExpire(int $token_expire): void
+    public function setTokenExpire(int $token_expire)
     {
         $this->token_expire = $token_expire;
+        return $this;
     }
 
 

@@ -3,13 +3,22 @@
 namespace FuturaMkt\Service\Meli;
 
 use FuturaMkt\Entity\Produto\Produto;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-
+use FuturaMkt\Type\Http\TypeHttp;
+use FuturaMkt\Type\Meli\TypeMeliEndPoints;
 
 class MeliProdutoUtil {
 
-    function addProduct(Produto $product, String $auth_code){
+    private MeliHttpMethods $meliHttp;
+
+    public function __construct()
+    {
+        $this->meliHttp = new MeliHttpMethods();
+    }
+
+    function setProduct(Produto $product, String $auth_code){
+
+        $this->meliHttp->setAccessToken($auth_code);
+
         $produto = array(
             "title"               => $product->getTitle(),
             "category_id"         => $product->getCategoryId(),
@@ -27,30 +36,20 @@ class MeliProdutoUtil {
         $defaultAttributes = MeliFuncUtils::convertDefaultAttr($product->getAttributes());
         $produto           = array_merge_recursive($produto, $defaultAttributes);
 
-        $client   = new Client([
-            'headers' => [
-                'Content-Type'   => 'application/json',
-                'Authorization'  => 'Bearer ' . $auth_code
-            ],
-        ]);
+        $responseProduct = $this->meliHttp->requestBodyAuthentication(
+            TypeHttp::POST,
+            MeliConstants::buildEndPoint(TypeMeliEndPoints::Product->value),
+            $produto
+        );
 
-        try {
-            $response = $client->request('POST', 'https://api.mercadolibre.com/items', [
-                'body' => json_encode($produto)
-            ]);
+        $product->setMktPlaceId($responseProduct['id']);
 
-            $rest_product = json_decode($response->getBody()->getContents());
-            $product->setMktPlaceId($rest_product->id);
+        $responseDescriptiopn = $this->meliHttp->requestBodyAuthentication(
+            TypeHttp::POST,
+            MeliConstants::buildEndPoint(TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
+            array('plain_text' => $product->getDescription())
+        );
 
-            $response = $client->request('POST', 'https://api.mercadolibre.com/items' . $product->getMktPlaceId() . '/description?api_version=2', [
-                'body' => json_encode(array('plain_text' => $product->getDescription())),
-            ]);
-
-        }catch (ClientException $e){
-            throw $e;
-        }
-
-        //$response->getBody()->getContents();
     }
 
 
