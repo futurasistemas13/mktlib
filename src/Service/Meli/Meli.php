@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 
 namespace FuturaMkt\Service\Meli;
@@ -32,7 +32,7 @@ class Meli extends Marketplace{
     }
 
     public function setProduct(Produto $product){
-        $this->productUtil->addProduct($product, $this->meliAuth->getAuthData()->getAccessToken());
+        $this->productUtil->setProduct($product, $this->meliAuth->getAuthData()->getAccessToken());
     }
 
 }

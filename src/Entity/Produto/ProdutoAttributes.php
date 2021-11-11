@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace FuturaMkt\Entity\Produto;
 
@@ -22,7 +22,7 @@ class ProdutoAttributes{
 
     function get(TypeAttribute $group): array
     {
-        return $this->attribute[$group->value];
+        return ((array_key_exists($group->value, $this->attribute))  && (is_array($this->attribute[$group->value]))) ?  $this->attribute[$group->value] : array();
     }
 
 

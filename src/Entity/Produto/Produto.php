@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 
 namespace FuturaMkt\Entity\Produto;
@@ -31,7 +31,7 @@ class Produto{
     /**
      * @param string $title
      */
-    public function setTitle(string $title)
+    public function setTitle(string $title) : Produto
     {
         $this->title = $title;
         return $this;
@@ -189,9 +189,9 @@ class Produto{
     /**
      * @return string
      */
-    public function hasMktPlaceId(): Boolean
+    public function hasMktPlaceId(): Bool
     {
-        return strlen($this->mktPlaceId) > 0;
+        return (strlen($this->mktPlaceId) > 0);
     }
 
     /**

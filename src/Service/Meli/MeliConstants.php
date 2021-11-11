@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace FuturaMkt\Service\Meli;
 
@@ -6,7 +6,7 @@ use FuturaMkt\Type\Meli;
 
 class MeliConstants{
 
-    const endPoint = 'https://api.mercadolibre.com/';
+    const endPoint = 'https://api.mercadolibre.com';
 
     public static function buildEndPoint($route, array $params = null): String
     {
@@ -16,7 +16,7 @@ class MeliConstants{
 
             if(($param != "")){
                 if(($param[0] == '{') && ($param[strlen($param)-1] == '}')){
-                    if ($params[$count] !== ''){
+                    if (($params[$count] !== '') && ($params[$count] !== null)){
                         $UrlParams[$key] = $params[$count];
                     } else{
                         unset($UrlParams[$key]);

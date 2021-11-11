@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace FuturaMkt\Service\Meli;
 
@@ -49,7 +49,7 @@ class MeliProdutoUtil {
             $productJson
         );
 
-        $product->setMktPlaceId($responseProduct['id']);
+        $product->setMktPlaceId($responseProduct->id);
 
         $responseDescriptiopn = $this->meliHttp->requestBodyAuthentication(
             TypeHttp::POST,
