@@ -19,7 +19,7 @@ class MeliProdutoUtil {
 
         $this->meliHttp->setAccessToken($auth_code);
 
-        $produto = array(
+        $productJson = array(
             "title"               => $product->getTitle(),
             "category_id"         => $product->getCategoryId(),
             "currency_id"         => $product->getMoeda()->value,
@@ -34,12 +34,19 @@ class MeliProdutoUtil {
         );
 
         $defaultAttributes = MeliFuncUtils::convertDefaultAttr($product->getAttributes());
-        $produto           = array_merge_recursive($produto, $defaultAttributes);
+        $productJson           = array_merge_recursive($productJson, $defaultAttributes);
+
+        $methodProd = TypeHttp::POST;
+        $paramsProd = null;
+        if($product->hasMktPlaceId()){
+            $methodProd = TypeHttp::PUT;
+            $paramsProd = array($product->getMktPlaceId());
+        }
 
         $responseProduct = $this->meliHttp->requestBodyAuthentication(
-            TypeHttp::POST,
-            MeliConstants::buildEndPoint(TypeMeliEndPoints::Product->value),
-            $produto
+            $methodProd,
+            MeliConstants::buildEndPoint(TypeMeliEndPoints::Product->value, $paramsProd),
+            $productJson
         );
 
         $product->setMktPlaceId($responseProduct['id']);

@@ -186,6 +186,14 @@ class Produto{
     }
 
     /**
+     * @return string
+     */
+    public function hasMktPlaceId(): Boolean
+    {
+        return strlen($this->mktPlaceId) > 0;
+    }
+
+    /**
      * @param string $mktPlaceId
      */
     public function setMktPlaceId(string $mktPlaceId): void
