@@ -175,6 +175,7 @@ class Produto{
     public function setDescription(string $description): void
     {
         $this->description = $description;
+        return $this;
     }
 
     /**
@@ -196,9 +197,10 @@ class Produto{
     /**
      * @param string $mktPlaceId
      */
-    public function setMktPlaceId(string $mktPlaceId): void
+    public function setMktPlaceId(string $mktPlaceId)
     {
         $this->mktPlaceId = $mktPlaceId;
+        return $this;
     }
 
 }
