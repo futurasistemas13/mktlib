@@ -16,10 +16,13 @@ class MeliProdutoUtil {
     {
         $this->meliAuth = $auth;
         $this->meliHttp = new MeliHttpMethods();
-        $this->meliHttp->setAccessToken($this->meliAuth->getAuthData()->getAccessToken());
+
     }
 
     function setProduct(Produto $product){
+        $this->meliHttp->setAccessToken($this->meliAuth->getAuthData()->getAccessToken());
+
+        $isUpdating = $product->hasMktPlaceId();
 
         $productJson = array(
             "title"               => $product->getTitle(),
@@ -39,7 +42,7 @@ class MeliProdutoUtil {
 
         $methodProd = TypeHttp::POST;
         $paramsProd = null;
-        if($product->hasMktPlaceId()){
+        if($isUpdating){
             $methodProd = TypeHttp::PUT;
             $paramsProd = array($product->getMktPlaceId());
         }
@@ -54,18 +57,21 @@ class MeliProdutoUtil {
             throw new \Exception('ERROO!!');
         }
 
-        $product->setMktPlaceId($responseProduct->id);
+        $product->setMktPlaceId($responseProduct['id']);
         $responseDescriptiopn = $this->meliHttp->requestBodyAuthentication(
             $methodProd,
             MeliConstants::buildEndPoint(TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
             array('plain_text' => $product->getDescription())
         );
+
     }
 
-    public function validate(array $meliReturn){
+    public function validate(array $meliReturn, int $returCode){
+        $return = (($returCode >= 200) && ($returCode < 300))
 
+        if($meliReturn['error'])
 
-        return true;
+        return $return;
 
     }
 }

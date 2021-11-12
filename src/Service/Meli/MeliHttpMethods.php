@@ -4,7 +4,9 @@ namespace FuturaMkt\Service\Meli;
 use FuturaMkt\Type\Http\TypeHttp;
 use FuturaMkt\Type\Meli\TypeMeliEndPoints;
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\ClientException;
+use FuturaMkt\Exception\HttpMktException;
 
 class MeliHttpMethods{
 
@@ -34,6 +36,8 @@ class MeliHttpMethods{
     }
 
     public function requestBodyAuthentication(TypeHttp $method, String $url, array $dataJson){
+        //$retorno  = null;
+        //$response = null;
         try{
             $response = $this->clientHttp->request($method->value, $url, [
                 'headers' => [
@@ -42,11 +46,13 @@ class MeliHttpMethods{
                 ],
                 'body' => json_encode($dataJson)
             ]);
-        }catch(ClientException $e){
-            echo $e->getResponse()->getBody()->getContents();
+            return $response->getBody()->getContents();
+        }catch(ClientException $cli_e){
+            //$retorno = $cli_e->getResponse()->getBody()->getContents();
+            throw new HttpMktException($cli_e->getResponse()->getBody()->getContents(), $cli_e->getCode());
         }
 
-        return json_decode($response->getBody()->getContents());
+        //return json_decode($retorno, true);//json_decode($response->getBody()->getContents());
     }
 
 
