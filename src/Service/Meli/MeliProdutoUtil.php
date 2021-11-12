@@ -5,26 +5,27 @@ namespace FuturaMkt\Service\Meli;
 use FuturaMkt\Entity\Produto\Produto;
 use FuturaMkt\Type\Http\TypeHttp;
 use FuturaMkt\Type\Meli\TypeMeliEndPoints;
+use http\Exception;
 
 class MeliProdutoUtil {
 
     private MeliHttpMethods $meliHttp;
+    private MeliAuthUtil    $meliAuth;
 
-    public function __construct()
+    public function __construct(MeliAuthUtil $auth)
     {
+        $this->meliAuth = $auth;
         $this->meliHttp = new MeliHttpMethods();
+        $this->meliHttp->setAccessToken($this->meliAuth->getAuthData()->getAccessToken());
     }
 
-    function setProduct(Produto $product, String $auth_code){
-
-        $this->meliHttp->setAccessToken($auth_code);
+    function setProduct(Produto $product){
 
         $productJson = array(
             "title"               => $product->getTitle(),
             "category_id"         => $product->getCategoryId(),
             "currency_id"         => $product->getMoeda()->value,
             "condition"           => $product->getCondition()->value,
-
             //start - check for the grid
             "price"               => $product->getPrice(),
             "pictures"            => MeliFuncUtils::convertPicture($product->getImage()),
@@ -34,7 +35,7 @@ class MeliProdutoUtil {
         );
 
         $defaultAttributes = MeliFuncUtils::convertDefaultAttr($product->getAttributes());
-        $productJson           = array_merge_recursive($productJson, $defaultAttributes);
+        $productJson       = array_merge_recursive($productJson, $defaultAttributes);
 
         $methodProd = TypeHttp::POST;
         $paramsProd = null;
@@ -49,15 +50,22 @@ class MeliProdutoUtil {
             $productJson
         );
 
-        $product->setMktPlaceId($responseProduct->id);
+        if (!$this->validate($responseProduct)){
+            throw new \Exception('ERROO!!');
+        }
 
+        $product->setMktPlaceId($responseProduct->id);
         $responseDescriptiopn = $this->meliHttp->requestBodyAuthentication(
-            TypeHttp::POST,
+            $methodProd,
             MeliConstants::buildEndPoint(TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
             array('plain_text' => $product->getDescription())
         );
-
     }
 
+    public function validate(array $meliReturn){
 
+
+        return true;
+
+    }
 }

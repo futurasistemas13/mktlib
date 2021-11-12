@@ -15,7 +15,7 @@ class Meli extends Marketplace{
     function __construct()
     {
         $this->meliAuth    = new MeliAuthUtil();
-        $this->productUtil = new MeliProdutoUtil();
+        $this->productUtil = new MeliProdutoUtil($this->meliAuth);
     }
 
     public function authenticate(MktConnection $data): MktConnection
@@ -32,7 +32,7 @@ class Meli extends Marketplace{
     }
 
     public function setProduct(Produto $product){
-        $this->productUtil->setProduct($product, $this->meliAuth->getAuthData()->getAccessToken());
+        $this->productUtil->setProduct($product);
     }
 
 }
