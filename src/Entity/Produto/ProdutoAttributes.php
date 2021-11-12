@@ -7,10 +7,6 @@ use FuturaMkt\Type\TypeAttribute;
 class ProdutoAttributes{
     private $attribute;
 
-    function __construct()
-    {
-    }
-
     function add(TypeAttribute $group, String $name, String $value)
     {
         $attr = new Attribute();

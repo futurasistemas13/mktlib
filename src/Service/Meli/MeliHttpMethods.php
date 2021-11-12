@@ -2,9 +2,7 @@
 namespace FuturaMkt\Service\Meli;
 
 use FuturaMkt\Type\Http\TypeHttp;
-use FuturaMkt\Type\Meli\TypeMeliEndPoints;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\ClientException;
 use FuturaMkt\Exception\HttpMktException;
 
@@ -36,8 +34,6 @@ class MeliHttpMethods{
     }
 
     public function requestBodyAuthentication(TypeHttp $method, String $url, array $dataJson){
-        //$retorno  = null;
-        //$response = null;
         try{
             $response = $this->clientHttp->request($method->value, $url, [
                 'headers' => [
@@ -46,13 +42,44 @@ class MeliHttpMethods{
                 ],
                 'body' => json_encode($dataJson)
             ]);
-            return $response->getBody()->getContents();
+
+            $arrayConvert = json_decode($response->getBody()->getContents(), true);
+            if ((is_array($arrayConvert)) && (($response->getStatusCode() >= 200) && ($response->getStatusCode() < 300)) ){
+                return $arrayConvert;
+            }else{
+                throw new HttpMktException($response->getBody()->getContents(), $response->getStatusCode());
+            }
+
         }catch(ClientException $cli_e){
-            //$retorno = $cli_e->getResponse()->getBody()->getContents();
             throw new HttpMktException($cli_e->getResponse()->getBody()->getContents(), $cli_e->getCode());
         }
+    }
 
-        //return json_decode($retorno, true);//json_decode($response->getBody()->getContents());
+    public function requestForm(TypeHttp $method, String $url, array $dataJson, Bool $includeAuth = false){
+
+        $cliParams = null;
+        if($includeAuth){
+            $cliParams = array(
+                'headers' => [
+                    'Content-Type'   => 'application/json',
+                    'Authorization'  => 'Bearer ' . $this->getAccessToken()
+                ]);
+        }
+        $cliParams['form_params'] = $dataJson;
+
+        try{
+            $response = $this->clientHttp->request($method->value, $url, $cliParams);
+
+            $arrayConvert = json_decode($response->getBody()->getContents(), true);
+            if ((is_array($arrayConvert)) && (($response->getStatusCode() >= 200) && ($response->getStatusCode() < 300)) ){
+                return $arrayConvert;
+            }else{
+                throw new HttpMktException($response->getBody()->getContents(), $response->getStatusCode());
+            }
+
+        }catch(ClientException $cli_e){
+            throw new HttpMktException($cli_e->getResponse()->getBody()->getContents(), $cli_e->getCode());
+        }
     }
 
 

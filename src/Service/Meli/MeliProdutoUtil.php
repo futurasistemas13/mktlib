@@ -5,7 +5,6 @@ namespace FuturaMkt\Service\Meli;
 use FuturaMkt\Entity\Produto\Produto;
 use FuturaMkt\Type\Http\TypeHttp;
 use FuturaMkt\Type\Meli\TypeMeliEndPoints;
-use http\Exception;
 
 class MeliProdutoUtil {
 
@@ -16,13 +15,12 @@ class MeliProdutoUtil {
     {
         $this->meliAuth = $auth;
         $this->meliHttp = new MeliHttpMethods();
-
     }
 
     function setProduct(Produto $product){
         $this->meliHttp->setAccessToken($this->meliAuth->getAuthData()->getAccessToken());
 
-        $isUpdating = $product->hasMktPlaceId();
+        $isUpdating  = $product->hasMktPlaceId();
 
         $productJson = array(
             "title"               => $product->getTitle(),
@@ -53,10 +51,6 @@ class MeliProdutoUtil {
             $productJson
         );
 
-        if (!$this->validate($responseProduct)){
-            throw new \Exception('ERROO!!');
-        }
-
         $product->setMktPlaceId($responseProduct['id']);
         $responseDescriptiopn = $this->meliHttp->requestBodyAuthentication(
             $methodProd,
@@ -66,12 +60,4 @@ class MeliProdutoUtil {
 
     }
 
-    public function validate(array $meliReturn, int $returCode){
-        $return = (($returCode >= 200) && ($returCode < 300))
-
-        if($meliReturn['error'])
-
-        return $return;
-
-    }
 }
