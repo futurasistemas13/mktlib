@@ -2,8 +2,6 @@
 
 namespace FuturaMkt\Service;
 
-use FuturaMkt\Entity\Authentication;
-use FuturaMkt\Entity\Authentication\Meli;
 use FuturaMkt\Entity\Produto\Produto;
 use FuturaMkt\Entity\Authentication\MktConnection;
 

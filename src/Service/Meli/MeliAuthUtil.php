@@ -9,17 +9,11 @@ use FuturaMkt\Type\Meli\TypeMeliEndPoints;
 
 class MeliAuthUtil{
 
-    private MktConnection   $dataAuth;
     private MeliHttpMethods $meliHttpMethods;
 
     public function __construct(MeliHttpMethods $meliHttpMethods)
     {
         $this->meliHttpMethods = $meliHttpMethods;
-    }
-
-    public function getAuthData(): MktConnection
-    {
-        return $this->dataAuth;
     }
 
     public function genToken(MktConnection $data): MktConnection
@@ -49,7 +43,6 @@ class MeliAuthUtil{
             );
             return $this->cliToken($data, $form);
         }else{
-            $this->dataAuth = $data;
             $this->meliHttpMethods->setAccessToken($data->getAccessToken());
             return $data;
         }
@@ -65,7 +58,6 @@ class MeliAuthUtil{
         if (isset($jsonResp['refresh_token'])){
             $data->setRefreshToken($jsonResp['refresh_token']);
         }
-        $this->dataAuth = $data;
         $this->meliHttpMethods->setAccessToken($response['access_token']);
         return $data;
     }
