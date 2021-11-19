@@ -8,7 +8,6 @@ class MeliConnection extends MktConnection{
 
     private $client_id     = "";
     private $client_secret = "";
-    private $code          = "";
     private $redirect_uri  = "";
     private $access_token  = "";
     private $refresh_token = "";
@@ -45,23 +44,6 @@ class MeliConnection extends MktConnection{
     public function setClientSecret(string $client_secret)
     {
         $this->client_secret = $client_secret;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCode(): string
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param string $code
-     */
-    public function setCode(string $code)
-    {
-        $this->code = $code;
         return $this;
     }
 
@@ -121,7 +103,7 @@ class MeliConnection extends MktConnection{
      */
     public function getTokenExpire(): int
     {
-        return $this->token_expire;
+        return time() + $this->token_expire;
     }
 
     /**

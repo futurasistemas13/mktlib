@@ -11,14 +11,13 @@ class MeliProdutoUtil {
     private MeliHttpMethods $meliHttp;
     private MeliAuthUtil    $meliAuth;
 
-    public function __construct(MeliAuthUtil $auth)
+    public function __construct(MeliAuthUtil $auth, MeliHttpMethods $httpMethods)
     {
         $this->meliAuth = $auth;
-        $this->meliHttp = new MeliHttpMethods();
+        $this->meliHttp = $httpMethods;
     }
 
     function setProduct(Produto $product){
-        $this->meliHttp->setAccessToken($this->meliAuth->getAuthData()->getAccessToken());
 
         $isUpdating  = $product->hasMktPlaceId();
 
@@ -52,7 +51,7 @@ class MeliProdutoUtil {
         );
 
         $product->setMktPlaceId($responseProduct['id']);
-        $responseDescriptiopn = $this->meliHttp->requestBodyAuthentication(
+        $responseDescription = $this->meliHttp->requestBodyAuthentication(
             $methodProd,
             MeliConstants::buildEndPoint(TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
             array('plain_text' => $product->getDescription())

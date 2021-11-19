@@ -1,11 +1,9 @@
 <?php declare(strict_types=1);
 
-
 namespace FuturaMkt\Entity\Produto;
 
 use FuturaMkt\Type\TypeMoeda;
 use FuturaMkt\Type\Product\TypeProductCondition;
-
 
 class Produto{
     private String $mktPlaceId         = "";
@@ -18,7 +16,6 @@ class Produto{
     private ProdutoAttributes $Attributes;
     private array $productImage;
     private String $description = "";
-
 
     /**
      * @return string

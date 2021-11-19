@@ -9,7 +9,11 @@ use FuturaMkt\Entity\Authentication\MktConnection;
 
 class Marketplace implements iMarketplace{
 
-    public function authenticate(MktConnection $data){
+    public function authenticate(MktConnection $data): MktConnection{
+        //
+    }
+
+    public function refreshAuthentication(MktConnection $data): MktConnection{
         //
     }
 
