@@ -42,8 +42,8 @@ class MeliAuthUtil{
             ($data->getRefreshToken())      &&
             ($data->getTokenExpire() < time() + 1) ) {
             $form = array(
-                'grant_type' => 'refresh_token',
-                'client_id' => $data->getClientId(),
+                'grant_type'    => 'refresh_token',
+                'client_id'     => $data->getClientId(),
                 'client_secret' => $data->getClientSecret(),
                 'refresh_token' => $data->getRefreshToken()
             );

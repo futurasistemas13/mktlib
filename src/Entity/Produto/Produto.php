@@ -2,6 +2,7 @@
 
 namespace FuturaMkt\Entity\Produto;
 
+use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeMoeda;
 use FuturaMkt\Type\Product\TypeProductCondition;
 
@@ -13,9 +14,14 @@ class Produto{
     private Int $quantity              = 0;
     private TypeMoeda $moeda           = TypeMoeda::BRL;
     private TypeProductCondition $condition;
-    private ProdutoAttributes $Attributes;
+    private ProdutoAttributes $attributes;
     private array $productImage;
     private String $description = "";
+
+    public function __construct()
+    {
+        $this->attributes = new ProdutoAttributes();
+    }
 
     /**
      * @return string
@@ -68,22 +74,22 @@ class Produto{
         return $this;
     }
 
-    /**
-     * @return ProdutoAttributes
-     */
-    public function getAttributes(): ProdutoAttributes
-    {
-        return $this->Attributes;
-    }
-
-    /**
-     * @param ProdutoAttributes $Attributes
-     */
-    public function setAttributes(ProdutoAttributes $Attributes)
-    {
-        $this->Attributes = $Attributes;
-        return $this;
-    }
+//    /**
+//     * @return ProdutoAttributes
+//     */
+//    public function getAttributes(): ProdutoAttributes
+//    {
+//        return $this->Attributes;
+//    }
+//
+//    /**
+//     * @param ProdutoAttributes $Attributes
+//     */
+//    public function setAttributes(ProdutoAttributes $Attributes)
+//    {
+//        $this->Attributes = $Attributes;
+//        return $this;
+//    }
 
     /**
      * @return TypeMoeda
@@ -197,6 +203,23 @@ class Produto{
     public function setMktPlaceId(string $mktPlaceId)
     {
         $this->mktPlaceId = $mktPlaceId;
+        return $this;
+    }
+
+    /**
+     * @return ProdutoAttributes
+     */
+    public function getAttributes(): ProdutoAttributes
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @param ProdutoAttributes $attributes
+     */
+    public function setAttribute(TypeAttribute $group, String $name, String $value)
+    {
+        $this->attributes->add($group, $name, $value);
         return $this;
     }
 
