@@ -14,33 +14,21 @@ class Meli extends Marketplace{
 
     function __construct()
     {
-        $this->meliAuth     = new MeliAuthUtil();
         $this->meliHttp     = new MeliHttpMethods();
+        $this->meliAuth     = new MeliAuthUtil($this->meliHttp);
         $this->productUtil  = new MeliProdutoUtil($this->meliAuth, $this->meliHttp);
     }
 
-    public function authenticate(MktConnection $data): MktConnection
+    public function setAuthentication(MktConnection $data): void
     {
-        return $this->meliAuth->genToken($data);
-    }
-
-    public function refreshAuthentication(MktConnection $data): MktConnection{
         //só da refresh se realmente for necessário (refresh token expirado...)
         if( ($data->getTokenExpire() !== 0) &&
             ($data->getAccessToken())       &&
             ($data->getRefreshToken())      &&
             ($data->getTokenExpire() < time() + 1) )
         {
-            return $this->meliAuth->refreshToken($data);
-        }else{
-            return $data;
+            $this->meliAuth->refreshToken($data);
         }
-    }
-
-    public function __call(string $name, array $arguments)
-    {
-        $this->meliAuth->refreshToken($this->meliAuth->getAuthData());
-        $this->meliHttp->setAccessToken($this->meliAuth->getAuthData()->getAccessToken());
     }
 
     public function setProduct(Produto $product){

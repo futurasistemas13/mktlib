@@ -18,7 +18,8 @@ class MeliProdutoUtil {
     }
 
     function setProduct(Produto $product){
-
+        //$this->meliAuth->refreshToken($this->meliAuth->getAuthData());
+        //$this->meliHttp->setAccessToken($this->meliAuth->getAuthData()->getAccessToken());
         $isUpdating  = $product->hasMktPlaceId();
 
         $productJson = array(

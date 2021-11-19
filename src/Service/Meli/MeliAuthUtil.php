@@ -12,9 +12,9 @@ class MeliAuthUtil{
     private MktConnection   $dataAuth;
     private MeliHttpMethods $meliHttpMethods;
 
-    public function __construct()
+    public function __construct(MeliHttpMethods $meliHttpMethods)
     {
-        $this->meliHttpMethods = new MeliHttpMethods();
+        $this->meliHttpMethods = $meliHttpMethods;
     }
 
     public function getAuthData(): MktConnection
@@ -56,6 +56,7 @@ class MeliAuthUtil{
             $data->setRefreshToken($jsonResp['refresh_token']);
         }
         $this->dataAuth = $data;
+        $this->meliHttpMethods->setAccessToken($response['access_token']);
         return $data;
     }
 
