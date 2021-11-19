@@ -28,7 +28,7 @@ class MeliAuthUtil{
             'grant_type'    => 'authorization_code',
             'client_id'     => $data->getClientId(),
             'client_secret' => $data->getClientSecret(),
-            'code'          => $data->getCode(),
+            'code'          => $data->getRefreshToken(),
             'redirect_uri'  => $data->getRedirectUri()
         );
         return $this->cliToken($data, $form);
