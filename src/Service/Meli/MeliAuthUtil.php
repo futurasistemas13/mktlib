@@ -36,13 +36,23 @@ class MeliAuthUtil{
 
     public function refreshToken(MktConnection $data): MktConnection
     {
-        $form = array(
-            'grant_type'    => 'refresh_token',
-            'client_id'     => $data->getClientId(),
-            'client_secret' => $data->getClientSecret(),
-            'refresh_token' => $data->getRefreshToken()
-        );
-        return $this->cliToken($data, $form);
+        //só da refresh se realmente for necessário (refresh token expirado...)
+        if( ($data->getTokenExpire() !== 0) &&
+            ($data->getAccessToken())       &&
+            ($data->getRefreshToken())      &&
+            ($data->getTokenExpire() < time() + 1) ) {
+            $form = array(
+                'grant_type' => 'refresh_token',
+                'client_id' => $data->getClientId(),
+                'client_secret' => $data->getClientSecret(),
+                'refresh_token' => $data->getRefreshToken()
+            );
+            return $this->cliToken($data, $form);
+        }else{
+            $this->dataAuth = $data;
+            $this->meliHttpMethods->setAccessToken($data->getAccessToken());
+            return $data;
+        }
     }
 
     private function cliToken(MktConnection $data, array $form): MktConnection

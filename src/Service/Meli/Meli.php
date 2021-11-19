@@ -21,14 +21,7 @@ class Meli extends Marketplace{
 
     public function setAuthentication(MktConnection $data): void
     {
-        //só da refresh se realmente for necessário (refresh token expirado...)
-        if( ($data->getTokenExpire() !== 0) &&
-            ($data->getAccessToken())       &&
-            ($data->getRefreshToken())      &&
-            ($data->getTokenExpire() < time() + 1) )
-        {
-            $this->meliAuth->refreshToken($data);
-        }
+        $this->meliAuth->refreshToken($data);
     }
 
     public function setProduct(Produto $product){
