@@ -1,26 +1,27 @@
 <?php declare(strict_types=1);
 
-namespace FuturaMkt\Entity\Produto;
+namespace FuturaMkt\Entity\Product;
 
 use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeMoeda;
 use FuturaMkt\Type\Product\TypeProductCondition;
 
-class Produto{
-    private String $mktPlaceId         = "";
-    private String $title              = "";
-    private String $category_id        = "";
-    private float $price               = 0;
-    private Int $quantity              = 0;
-    private TypeMoeda $moeda           = TypeMoeda::BRL;
+class Product{
+    private String    $mktPlaceId         = "";
+    private String    $title              = "";
+    private String    $category_id        = "";
+    private float     $price              = 0;
+    private Int       $quantity           = 0;
+    private TypeMoeda $moeda              = TypeMoeda::BRL;
     private TypeProductCondition $condition;
-    private ProdutoAttributes $attributes;
-    private array $productImage;
+    private array  $attributes;
+    private array  $productImages;
     private String $description = "";
+
 
     public function __construct()
     {
-        $this->attributes = new ProdutoAttributes();
+        //
     }
 
     /**
@@ -33,8 +34,9 @@ class Produto{
 
     /**
      * @param string $title
+     * @return Product
      */
-    public function setTitle(string $title) : Produto
+    public function setTitle(string $title) : Product
     {
         $this->title = $title;
         return $this;
@@ -50,8 +52,9 @@ class Produto{
 
     /**
      * @param string $category_id
+     * @return Product
      */
-    public function setCategoryId(string $category_id)
+    public function setCategoryId(string $category_id): Product
     {
         $this->category_id = $category_id;
         return $this;
@@ -67,29 +70,13 @@ class Produto{
 
     /**
      * @param float $price
+     * @return Product
      */
-    public function setPrice(float $price)
+    public function setPrice(float $price): Product
     {
         $this->price = $price;
         return $this;
     }
-
-//    /**
-//     * @return ProdutoAttributes
-//     */
-//    public function getAttributes(): ProdutoAttributes
-//    {
-//        return $this->Attributes;
-//    }
-//
-//    /**
-//     * @param ProdutoAttributes $Attributes
-//     */
-//    public function setAttributes(ProdutoAttributes $Attributes)
-//    {
-//        $this->Attributes = $Attributes;
-//        return $this;
-//    }
 
     /**
      * @return TypeMoeda
@@ -101,8 +88,9 @@ class Produto{
 
     /**
      * @param TypeMoeda $moeda
+     * @return Product
      */
-    public function setMoeda(TypeMoeda $moeda)
+    public function setMoeda(TypeMoeda $moeda): Product
     {
         $this->moeda = $moeda;
         return $this;
@@ -118,32 +106,11 @@ class Produto{
 
     /**
      * @param TypeProductCondition $condition
+     * @return Product
      */
-    public function setCondition(TypeProductCondition $condition)
+    public function setCondition(TypeProductCondition $condition): Product
     {
         $this->condition = $condition;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getImage(): array
-    {
-        return $this->productImage;
-    }
-
-    /**
-     * @param String $Image
-     * @param String $mktImageCode
-     */
-    public function setImage(String $Image, String $mktImageCode = '')
-    {
-        $productImage = new ProductImage();
-        $productImage->setImageLink($Image);
-        $productImage->setMktCode($mktImageCode);
-        $this->productImage[] = $productImage;
-
         return $this;
     }
 
@@ -157,8 +124,9 @@ class Produto{
 
     /**
      * @param int $quantity
+     * @return Product
      */
-    public function setQuantity(int $quantity)
+    public function setQuantity(int $quantity): Product
     {
         $this->quantity = $quantity;
         return $this;
@@ -174,8 +142,9 @@ class Produto{
 
     /**
      * @param string $description
+     * @return Product
      */
-    public function setDescription(string $description)
+    public function setDescription(string $description): Product
     {
         $this->description = $description;
         return $this;
@@ -190,7 +159,7 @@ class Produto{
     }
 
     /**
-     * @return string
+     * @return bool
      */
     public function hasMktPlaceId(): Bool
     {
@@ -199,28 +168,52 @@ class Produto{
 
     /**
      * @param string $mktPlaceId
+     * @return Product
      */
-    public function setMktPlaceId(string $mktPlaceId)
+    public function setMktPlaceId(string $mktPlaceId): Product
     {
         $this->mktPlaceId = $mktPlaceId;
         return $this;
     }
 
     /**
-     * @return ProdutoAttributes
+     * @param TypeAttribute $group
+     * @return array
      */
-    public function getAttributes(): ProdutoAttributes
+    public function getAttributes(TypeAttribute $group): array
     {
-        return $this->attributes;
+        return ((array_key_exists($group->value, $this->attributes))  && (is_array($this->attributes[$group->value]))) ?  $this->attributes[$group->value] : array();
     }
 
     /**
-     * @param ProdutoAttributes $attributes
+     * @param TypeAttribute $group
+     * @param String $attrName
+     * @param String $attrValue
+     * @return Product
      */
-    public function setAttribute(TypeAttribute $group, String $name, String $value)
+    public function setAttribute(TypeAttribute $group, String $attrName, String $attrValue): Product
     {
-        $this->attributes->add($group, $name, $value);
+        $this->attributes[$group->value][] = new Attribute($attrName, $attrValue);
         return $this;
     }
+
+    /**
+     * @return array
+     */
+    public function getImages(): array
+    {
+        return is_array($this->productImages) ? $this->productImages : array();
+    }
+
+    /**
+     * @param String $productImages
+     * @return Product
+     */
+    public function setImage(String $productImage, $productImageId): Product
+    {
+        $this->productImages[] = new ProductImage($productImage, $productImageId);
+        return $this;
+    }
+
 
 }

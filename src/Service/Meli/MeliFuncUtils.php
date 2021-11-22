@@ -2,14 +2,13 @@
 
 namespace FuturaMkt\Service\Meli;
 
-use FuturaMkt\Entity\Produto\ProdutoAttributes;
 use FuturaMkt\Type\TypeAttribute;
 
 class MeliFuncUtils{
-    public static function convertAttr(ProdutoAttributes $attributes): array
+    public static function convertAttr(array $attributes): array
     {
         $return = array();
-        foreach($attributes->get(TypeAttribute::Datasheet) as $attr){
+        foreach($attributes[TypeAttribute::Datasheet->value] as $attr){
             $return[] = array(
                 'id'         => $attr->getName(),
                 'value_name' => $attr->getValue()
@@ -18,10 +17,10 @@ class MeliFuncUtils{
         return $return;
     }
 
-    public static function convertDefaultAttr(ProdutoAttributes $attributes): array
+    public static function convertDefaultAttr(array $attributes): array
     {
         $return = array();
-        foreach($attributes->get(TypeAttribute::DefaultAttributes) as $attr){
+        foreach($attributes[TypeAttribute::DefaultAttributes->value] as $attr){
             $aux = array();
             $aux[$attr->getName()] = $attr->getValue();
             $return = array_merge($return, $aux);

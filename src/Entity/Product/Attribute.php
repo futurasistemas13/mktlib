@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace FuturaMkt\Entity\Produto;
+namespace FuturaMkt\Entity\Product;
 
 class Attribute{
-    private String $name   = "";
-    private String $value  = "";
+    private String $name;
+    private String $value;
 
     function __construct(String $name = '', String $value = '')
     {
-         $this->name  = $name;
-         $this->value = $value;
+         $this->setName($name);
+         $this->setValue($value);
     }
 
     /**
@@ -43,6 +43,4 @@ class Attribute{
     {
         $this->value = $value;
     }
-
-
 }

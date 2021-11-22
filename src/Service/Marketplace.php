@@ -2,7 +2,7 @@
 
 namespace FuturaMkt\Service;
 
-use FuturaMkt\Entity\Produto\Produto;
+use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Entity\Authentication\MktConnection;
 
 class Marketplace implements iMarketplace{
@@ -12,7 +12,7 @@ class Marketplace implements iMarketplace{
 
     }
 
-    public function setProduct(Produto $product){
+    public function setProduct(Product $product){
         //
     }
 }

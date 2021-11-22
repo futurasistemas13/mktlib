@@ -2,22 +2,25 @@
 
 namespace FuturaMkt\Service\Meli;
 
-use FuturaMkt\Entity\Produto\Produto;
+use FuturaMkt\Entity\Product\Product;
+use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Type\Http\TypeHttp;
 use FuturaMkt\Type\Meli\TypeMeliEndPoints;
+use FuturaMkt\Type\TypeAttribute;
 
-class MeliProdutoUtil {
+class MeliProductUtil {
 
     private MeliHttpMethods $meliHttp;
-    private MeliAuthUtil    $meliAuth;
 
-    public function __construct(MeliAuthUtil $auth, MeliHttpMethods $httpMethods)
+    public function __construct(MeliHttpMethods $httpMethods)
     {
-        $this->meliAuth = $auth;
         $this->meliHttp = $httpMethods;
     }
 
-    function setProduct(Produto $product){
+    /**
+     * @throws HttpMktException
+     */
+    function setProduct(Product $product){
         $isUpdating  = $product->hasMktPlaceId();
 
         $productJson = array(
@@ -27,13 +30,14 @@ class MeliProdutoUtil {
             "condition"           => $product->getCondition()->value,
             //start - check for the grid
             "price"               => $product->getPrice(),
-            "pictures"            => MeliFuncUtils::convertPicture($product->getImage()),
+            "pictures"            => MeliFuncUtils::convertPicture($product->getImages()),
             "available_quantity"  => $product->getQuantity(),
             //end - check for the grid
-            "attributes"          => MeliFuncUtils::convertAttr($product->getAttributes()),
+            "attributes"          => MeliFuncUtils::convertAttr($product->getAttributes(TypeAttribute::Datasheet)),
         );
 
-        $defaultAttributes = MeliFuncUtils::convertDefaultAttr($product->getAttributes());
+        //Add default attributes to the main array...
+        $defaultAttributes = MeliFuncUtils::convertDefaultAttr($product->getAttributes(TypeAttribute::DefaultAttributes));
         $productJson       = array_merge_recursive($productJson, $defaultAttributes);
 
         $methodProd = TypeHttp::POST;

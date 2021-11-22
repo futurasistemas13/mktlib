@@ -3,11 +3,11 @@
 namespace FuturaMkt\Service;
 
 use FuturaMkt\Entity\Authentication\MktConnection;
-use FuturaMkt\Entity\Produto\Produto;
+use FuturaMkt\Entity\Product\Product;
 
 interface iMarketplace{
 
-    public function setProduct(Produto $product);
+    public function setProduct(Product $product);
     public function setAuthentication(MktConnection $data): void;
 
 }

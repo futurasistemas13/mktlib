@@ -5,17 +5,17 @@ use FuturaMkt\Type\Http\TypeHttp;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use FuturaMkt\Exception\HttpMktException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class MeliHttpMethods{
 
-    private $clientHttp;
+    private Client $clientHttp;
+    private String $accessToken = "";
 
     function __construct()
     {
         $this->clientHttp   = new Client();
     }
-
-    private $accessToken = "";
 
     /**
      * @return string
@@ -33,6 +33,10 @@ class MeliHttpMethods{
         $this->accessToken = $accessToken;
     }
 
+    /**
+     * @throws GuzzleException
+     * @throws HttpMktException
+     */
     public function requestBodyAuthentication(TypeHttp $method, String $url, array $dataJson){
         try{
             $response = $this->clientHttp->request($method->value, $url, [
@@ -55,6 +59,10 @@ class MeliHttpMethods{
         }
     }
 
+    /**
+     * @throws GuzzleException
+     * @throws HttpMktException
+     */
     public function requestForm(TypeHttp $method, String $url, array $dataJson, Bool $includeAuth = false){
 
         $cliParams = null;

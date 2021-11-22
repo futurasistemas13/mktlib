@@ -1,11 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace FuturaMkt\Entity\Produto;
+namespace FuturaMkt\Entity\Product;
 
 class ProductImage{
 
     private String $imageLink;
     private String $mktCode;
+
+    public function __construct(String $imgLink, String $mktCod)
+    {
+        $this->setImageLink($imgLink);
+        $this->setMktCode($mktCod);
+    }
 
     /**
      * @return String
@@ -38,6 +44,4 @@ class ProductImage{
     {
         $this->mktCode = $mktCode;
     }
-
-
 }

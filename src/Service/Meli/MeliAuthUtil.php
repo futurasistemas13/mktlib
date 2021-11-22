@@ -52,13 +52,13 @@ class MeliAuthUtil{
     {
         $jsonResp = $this->meliHttpMethods->requestForm(TypeHttp::POST, MeliConstants::buildEndPoint(TypeMeliEndPoints::AuthToken->value), $form);
 
-        if (isset($response['access_token'])){
-            $data->setAccessToken($response['access_token']);
+        if (isset($jsonResp['access_token'])){
+            $data->setAccessToken($jsonResp['access_token']);
         }
         if (isset($jsonResp['refresh_token'])){
             $data->setRefreshToken($jsonResp['refresh_token']);
         }
-        $this->meliHttpMethods->setAccessToken($response['access_token']);
+        $this->meliHttpMethods->setAccessToken($jsonResp['access_token']);
         return $data;
     }
 

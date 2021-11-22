@@ -2,8 +2,6 @@
 
 namespace FuturaMkt\Service\Meli;
 
-use FuturaMkt\Type\Meli;
-
 class MeliConstants{
 
     const endPoint = 'https://api.mercadolibre.com';
