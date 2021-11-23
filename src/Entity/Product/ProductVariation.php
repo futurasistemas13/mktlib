@@ -71,7 +71,7 @@ class ProductVariation
     /**
      * @return array
      */
-    public function getProductImage(): array
+    public function getProductImages(): array
     {
         return $this->productImages;
     }

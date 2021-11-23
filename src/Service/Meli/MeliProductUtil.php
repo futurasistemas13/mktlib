@@ -28,13 +28,17 @@ class MeliProductUtil {
             "category_id"         => $product->getCategoryId(),
             "currency_id"         => $product->getMoeda()->value,
             "condition"           => $product->getCondition()->value,
-            //start - check for the grid
-            "price"               => $product->getPrice(),
-            "pictures"            => MeliFuncUtils::convertPicture($product->getImages()),
-            "available_quantity"  => $product->getQuantity(),
-            //end - check for the grid
             "attributes"          => MeliFuncUtils::convertAttr($product->getAttributes(TypeAttribute::Datasheet)),
         );
+
+        if($product->hasVariation()){
+            $productJson["pictures"]        = MeliFuncUtils::convertPicture($product->getAllVariationImages());
+            $productJson["variations"]      = MeliFuncUtils::convertVariations($product->getVariationList());
+        }else{
+            $productJson["price"]               = $product->getPrice();
+            $productJson["pictures"]            = MeliFuncUtils::convertPicture($product->getImages());
+            $productJson["available_quantity"]  = $product->getQuantity();
+        }
 
         //Add default attributes to the main array...
         $defaultAttributes = MeliFuncUtils::convertDefaultAttr($product->getAttributes(TypeAttribute::DefaultAttributes));

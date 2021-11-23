@@ -7,7 +7,7 @@ class ProductImage{
     private String $imageLink;
     private String $mktCode;
 
-    public function __construct(String $imgLink, String $mktCod)
+    public function __construct(String $imgLink = '', String $mktCod = '')
     {
         $this->setImageLink($imgLink);
         $this->setMktCode($mktCod);

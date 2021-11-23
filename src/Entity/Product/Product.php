@@ -17,7 +17,7 @@ class Product{
     private array  $attributes;
     private array  $productImages;
     private String $description = "";
-
+    private array  $variationList;
 
     public function __construct()
     {
@@ -197,6 +197,16 @@ class Product{
         return $this;
     }
 
+    public function getAllVariationImages(): array
+    {
+        $return = array();
+        foreach ($this->getVariationList() as $variat){
+            $return[] = $variat->getProductImages();
+        }
+
+        return $return;
+    }
+
     /**
      * @return array
      */
@@ -206,13 +216,36 @@ class Product{
     }
 
     /**
-     * @param String $productImages
+     * @param String $productImage
+     * @param $productImageId
      * @return Product
      */
-    public function setImage(String $productImage, $productImageId): Product
+    public function setImage(String $productImage, String $productImageId = ''): Product
     {
         $this->productImages[] = new ProductImage($productImage, $productImageId);
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getVariationList(): array
+    {
+        return $this->variationList;
+    }
+
+    /**
+     * @param ProductVariation $productVariation
+     * @return Product
+     */
+    public function setVariation(ProductVariation $productVariation): Product
+    {
+        $this->variationList[] = $productVariation;
+        return $this;
+    }
+
+    public function hasVariation(): Bool{
+        return (is_array($this->variationList)) && (count($this->variationList) > 0);
     }
 
 
