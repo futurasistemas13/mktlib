@@ -77,12 +77,16 @@ class ProductVariation
     }
 
     /**
-     * @param ProductImage $productImage
+     * @param String $productImage
+     * @param String $imgCode
      * @return ProductVariation
      */
-    public function setProductImage(ProductImage $productImage): ProductVariation
+    public function setProductImage(String $productImage, String $imgCode  = ''): ProductVariation
     {
-        $this->productImages[] = $productImage;
+        $prodImg = new ProductImage();
+        $prodImg->setImageLink($productImage);
+        $prodImg->setMktCode($imgCode);
+        $this->productImages[] = $prodImg;
         return $this;
     }
 

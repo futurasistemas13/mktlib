@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="556eb81b-647d-406b-bd25-b6103ae0c35c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Product/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Product/ProductImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/ProductImage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Product/ProductVariation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/ProductVariation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Meli/MeliFuncUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Meli/MeliFuncUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Meli/MeliProductUtil.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Meli/MeliProductUtil.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +74,7 @@
       <workItem from="1637089169948" duration="560000" />
       <workItem from="1637089741955" duration="90000" />
       <workItem from="1637089841034" duration="38000" />
-      <workItem from="1637089888704" duration="45739000" />
+      <workItem from="1637089888704" duration="47545000" />
     </task>
     <servers />
   </component>
