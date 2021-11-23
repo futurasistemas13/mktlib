@@ -31,7 +31,7 @@ class MeliFuncUtils{
         $return = array();
         foreach ($images as $img){
             $return[] = array(
-              'source' => $img->getImageLink()
+                'source' => $img->getImageLink()
             );
         }
         return $return;
@@ -63,7 +63,7 @@ class MeliFuncUtils{
                 "attribute_combinations" => $comb,
                 "price"                  => $attr_variation->getPrice(),
                 "available_quantity"     => $attr_variation->getQuantity(),
-                "picture_ids"            => MeliFuncUtils::convertPictureSimpleArray($attr_variation->getProductImage()),
+                "picture_ids"            => MeliFuncUtils::convertPictureSimpleArray($attr_variation->getProductImages()),
             );
         }
         return $result;
