@@ -201,7 +201,7 @@ class Product{
     {
         $return = array();
         foreach ($this->getVariationList() as $variat){
-            $return[] = $variat->getProductImages();
+            $return = array_merge_recursive($return, $variat->getProductImages());
         }
 
         return $return;
