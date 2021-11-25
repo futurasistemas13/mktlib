@@ -4,10 +4,11 @@ namespace FuturaMkt\Entity\Product;
 
 class ProductVariation
 {
-    private array $attributes;
-    private float $price;
-    private Int   $quantity = 0;
-    private array $productImages;
+    private String $variationId = '';
+    private array  $attributes;
+    private float  $price;
+    private Int    $quantity = 0;
+    private array  $productImages;
 
     public function __construct()
     {
@@ -90,5 +91,22 @@ class ProductVariation
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getVariationId(): string
+    {
+        return $this->variationId;
+    }
+
+    /**
+     * @param string $variationId
+     * @return ProductVariation
+     */
+    public function setVariationId(string $variationId): ProductVariation
+    {
+        $this->variationId = $variationId;
+        return $this;
+    }
 
 }

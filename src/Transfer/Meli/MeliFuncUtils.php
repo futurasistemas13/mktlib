@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace FuturaMkt\Service\Meli;
+namespace FuturaMkt\Transfer\Meli;
 
 class MeliFuncUtils{
     public static function convertAttr(array $attributes): array
@@ -65,6 +65,10 @@ class MeliFuncUtils{
                 "available_quantity"     => $attr_variation->getQuantity(),
                 "picture_ids"            => MeliFuncUtils::convertPictureSimpleArray($attr_variation->getProductImages()),
             );
+            if($attr_variation->getVariationId() != '') {
+                $result[array_key_last($result)]["id"] = $attr_variation->getVariationId();
+            }
+
         }
         return $result;
     }

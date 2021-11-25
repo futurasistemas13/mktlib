@@ -197,13 +197,15 @@ class Product{
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getAllVariationImages(): array
     {
         $return = array();
         foreach ($this->getVariationList() as $variat){
             $return = array_merge_recursive($return, $variat->getProductImages());
         }
-
         return $return;
     }
 
