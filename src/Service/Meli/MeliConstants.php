@@ -14,7 +14,7 @@ class MeliConstants{
 
             if(($param != "")){
                 if(($param[0] == '{') && ($param[strlen($param)-1] == '}')){
-                    if (($params[$count] !== '') && ($params[$count] !== null)){
+                    if (($params !== null) && ($params[$count] !== '') && ($params[$count] !== null)){
                         $UrlParams[$key] = $params[$count];
                     } else{
                         unset($UrlParams[$key]);
