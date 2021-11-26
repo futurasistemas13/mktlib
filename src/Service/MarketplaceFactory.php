@@ -4,6 +4,7 @@ namespace FuturaMkt\Service;
 
 use Exception;
 use FuturaMkt\Type\TypeMarketplaces;
+use InvalidArgumentException;
 
 
 class MarketplaceFactory
@@ -15,7 +16,7 @@ class MarketplaceFactory
     public static function factory(TypeMarketplaces $mktType): Marketplace{
         return match ($mktType) {
             TypeMarketplaces::MercadoLivre => new Meli\Meli(),
-            default => null,
+            default => throw new InvalidArgumentException('Unknown format given'),
         };
     }
 
