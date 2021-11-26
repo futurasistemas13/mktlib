@@ -13,7 +13,7 @@ class MarketplaceFactory
      * @return Meli\Meli
      */
     public static function factory(TypeMarketplaces $mktType): Marketplace{
-        return match ($mktType->name) {
+        return match ($mktType) {
             TypeMarketplaces::MercadoLivre => new Meli\Meli(),
             default => null,
         };
