@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="556eb81b-647d-406b-bd25-b6103ae0c35c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/MarketplaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/MarketplaceFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Transfer/Meli/MeliFuncUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer/Meli/MeliFuncUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Transfer/Meli/ProductTransfer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer/Meli/ProductTransfer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Type/TypeAttribute.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Type/TypeAttribute.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +86,7 @@
       <workItem from="1637089888704" duration="56623000" />
       <workItem from="1637841198792" duration="2852000" />
       <workItem from="1637933220065" duration="33000" />
-      <workItem from="1637944967711" duration="3008000" />
+      <workItem from="1637944967711" duration="12124000" />
     </task>
     <servers />
   </component>

@@ -2,10 +2,8 @@
 
 namespace FuturaMkt\Service;
 
-use Exception;
 use FuturaMkt\Type\TypeMarketplaces;
 use InvalidArgumentException;
-
 
 class MarketplaceFactory
 {

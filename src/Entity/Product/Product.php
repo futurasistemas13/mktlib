@@ -18,10 +18,13 @@ class Product{
     private array  $productImages;
     private String $description = "";
     private array  $variationList;
+    private String $productLink;
+    private array  $MktDataReturn;
 
     public function __construct()
     {
-        //
+        $this->variationList     = array();
+        $this->MktDataReturn = array();
     }
 
     /**
@@ -193,6 +196,14 @@ class Product{
      */
     public function setAttribute(TypeAttribute $group, String $attrName, String $attrValue): Product
     {
+        if(array_key_exists($group->value, $this->attributes)){
+            foreach($this->attributes[$group->value] as $attr){
+                if(strtolower($attr->getName()) == $attrName){
+                    $attr->setValue($attrValue);
+                    return $this;
+                }
+            }
+        }
         $this->attributes[$group->value][] = new Attribute($attrName, $attrValue);
         return $this;
     }
@@ -248,6 +259,38 @@ class Product{
 
     public function hasVariation(): Bool{
         return (is_array($this->variationList)) && (count($this->variationList) > 0);
+    }
+
+    /**
+     * @return String
+     */
+    public function getProductLink(): string
+    {
+        return $this->productLink;
+    }
+
+    /**
+     * @param String $productLink
+     */
+    public function setProductLink(string $productLink): void
+    {
+        $this->productLink = $productLink;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMktDataReturn(): array
+    {
+        return $this->MktDataReturn;
+    }
+
+    /**
+     * @param array $MktDataReturn
+     */
+    public function setMktDataReturn(array $MktDataReturn): void
+    {
+        $this->MktDataReturn = $MktDataReturn;
     }
 
 

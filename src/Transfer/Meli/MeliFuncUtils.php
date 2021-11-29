@@ -73,4 +73,13 @@ class MeliFuncUtils{
         return $result;
     }
 
+    public static function meliGetAllPicturesID(array $meliProduct): array
+    {
+        $return = array();
+        foreach($meliProduct['variations'] as $var){
+            $return = array_merge_recursive($return, $var['picture_ids']);
+        }
+        return $return;
+    }
+
 }

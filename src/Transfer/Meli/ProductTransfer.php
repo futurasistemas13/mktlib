@@ -37,6 +37,34 @@ class ProductTransfer{
     public static function meliToProductObject(array $meliProduct, Product &$product): void
     {
         $product->setMktPlaceId($meliProduct['id']);
+        $product->setProductLink($meliProduct['permalink']);
+        $product->setMktDataReturn($meliProduct);
+
+        //upgrading the attributes...
+        if(isset($meliProduct['attributes'])){
+            foreach($meliProduct['attributes'] as $attr){
+                $product->setAttribute(TypeAttribute::Datasheet,  $attr['id'], $attr['value_name']);
+            }
+        }
+        if(isset($meliProduct)){
+            foreach($meliProduct as $key => $attr){
+                $product->setAttribute(TypeAttribute::DefaultAttributes,  $key, $attr);
+            }
+        }
+        if ($product->hasVariation()){
+            $position = 0;
+            $images = MeliFuncUtils::meliGetAllPicturesID($meliProduct);
+            foreach($product->getAllVariationImages() as $image){
+                $image->setMktCode($images[$position]);
+                $position ++;
+            }
+        }else{
+            $position = 0;
+            foreach ($product->getImages() as  $img){
+                $img->setMktCode($meliProduct['pictures'][$position]['id']);
+                $position ++;
+            }
+        }
     }
 
 }
