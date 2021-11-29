@@ -46,11 +46,12 @@ class ProductTransfer{
                 $product->setAttribute(TypeAttribute::Datasheet,  $attr['id'], $attr['value_name']);
             }
         }
-        if(isset($meliProduct)){
-            foreach($meliProduct as $key => $attr){
-                $product->setAttribute(TypeAttribute::DefaultAttributes,  $key, $attr);
-            }
+        //Upgrading the default atrributes
+        foreach($meliProduct as $key => $attr){
+            $product->setAttribute(TypeAttribute::DefaultAttributes,  $key, $attr, false);
         }
+
+        //Setting the code of the image on meli...
         if ($product->hasVariation()){
             $position = 0;
             $images = MeliFuncUtils::meliGetAllPicturesID($meliProduct);

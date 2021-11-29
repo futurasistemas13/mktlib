@@ -7,7 +7,6 @@ use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Transfer\Meli\ProductTransfer;
 use FuturaMkt\Type\Http\TypeHttp;
 use FuturaMkt\Type\Meli\TypeMeliEndPoints;
-use FuturaMkt\Type\TypeAttribute;
 use GuzzleHttp\Exception\GuzzleException;
 
 class MeliProductUtil {

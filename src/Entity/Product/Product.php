@@ -5,6 +5,7 @@ namespace FuturaMkt\Entity\Product;
 use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeMoeda;
 use FuturaMkt\Type\Product\TypeProductCondition;
+use FuturaMkt\Type\TypeStatus;
 
 class Product{
     private String    $mktPlaceId         = "";
@@ -20,11 +21,13 @@ class Product{
     private array  $variationList;
     private String $productLink;
     private array  $MktDataReturn;
+    private TypeStatus $status;
 
     public function __construct()
     {
         $this->variationList     = array();
-        $this->MktDataReturn = array();
+        $this->MktDataReturn     = array();
+        $this->attributes        = array();
     }
 
     /**
@@ -194,7 +197,7 @@ class Product{
      * @param String $attrValue
      * @return Product
      */
-    public function setAttribute(TypeAttribute $group, String $attrName, String $attrValue): Product
+    public function setAttribute(TypeAttribute $group, String $attrName, mixed $attrValue, bool $addNotExists = true): Product
     {
         if(array_key_exists($group->value, $this->attributes)){
             foreach($this->attributes[$group->value] as $attr){
@@ -204,7 +207,10 @@ class Product{
                 }
             }
         }
-        $this->attributes[$group->value][] = new Attribute($attrName, $attrValue);
+        if($addNotExists){
+            $this->attributes[$group->value][] = new Attribute($attrName, $attrValue);
+        }
+
         return $this;
     }
 
@@ -271,10 +277,12 @@ class Product{
 
     /**
      * @param String $productLink
+     * @return Product
      */
-    public function setProductLink(string $productLink): void
+    public function setProductLink(string $productLink): Product
     {
         $this->productLink = $productLink;
+        return $this;
     }
 
     /**
@@ -287,10 +295,31 @@ class Product{
 
     /**
      * @param array $MktDataReturn
+     * @return Product
      */
-    public function setMktDataReturn(array $MktDataReturn): void
+    public function setMktDataReturn(array $MktDataReturn): Product
     {
         $this->MktDataReturn = $MktDataReturn;
+        return $this;
+    }
+
+    /**
+     * @return TypeStatus
+     */
+    public function getStatus(): TypeStatus
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param TypeStatus $status
+     * @return Product
+     */
+    public function setStatus(TypeStatus $status): Product
+    {
+        $this->status = $status;
+        return $this;
+
     }
 
 
