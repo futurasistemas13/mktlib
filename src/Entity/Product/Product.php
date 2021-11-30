@@ -29,6 +29,7 @@ class Product{
         $this->variationList     = array();
         $this->MktDataReturn     = array();
         $this->attributes        = array();
+        $this->warranty          = new Warranty();
     }
 
     /**

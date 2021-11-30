@@ -2,7 +2,7 @@
 
 namespace FuturaMkt\Entity\Product;
 
-use FuturaMkt\Type\Product\TypePeriodDate;
+use FuturaMkt\Type\TypePeriodDate;
 use FuturaMkt\Type\Product\TypeWarranty;
 
 class Warranty
