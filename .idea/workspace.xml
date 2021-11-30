@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="556eb81b-647d-406b-bd25-b6103ae0c35c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/mktlib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mktlib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +37,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
     </include_path>
   </component>
   <component name="ProjectId" id="20VeUCXe9yfTztQjBctNG0lpEXR" />
@@ -88,7 +93,7 @@
       <workItem from="1637841198792" duration="2852000" />
       <workItem from="1637933220065" duration="33000" />
       <workItem from="1637944967711" duration="22211000" />
-      <workItem from="1638214504323" duration="22149000" />
+      <workItem from="1638214504323" duration="23253000" />
     </task>
     <servers />
   </component>
