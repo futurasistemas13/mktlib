@@ -2,7 +2,19 @@
 
 namespace FuturaMkt\Transfer\Meli;
 
+use FuturaMkt\Type\TypeStatus;
+
 class MeliFuncUtils{
+
+    public static function getProductStatus(TypeStatus $status){
+
+        switch ($status){
+            case TypeStatus::Active: return 'active';
+
+            case TypeStatus::Inactive: return 'paused';
+        }
+    }
+
     public static function convertAttr(array $attributes): array
     {
         $return = array();

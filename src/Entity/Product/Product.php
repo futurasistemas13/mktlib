@@ -139,6 +139,16 @@ class Product{
     }
 
     /**
+     * @param int $quantity
+     * @return Product
+     */
+    public function addQuantity(int $quantity): Product
+    {
+        $this->quantity = $this->quantity + $quantity;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getDescription(): string
@@ -259,6 +269,7 @@ class Product{
      */
     public function setVariation(ProductVariation $productVariation): Product
     {
+        $this->addQuantity($productVariation->getQuantity());
         $this->variationList[] = $productVariation;
         return $this;
     }

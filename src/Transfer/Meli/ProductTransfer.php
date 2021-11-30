@@ -4,6 +4,8 @@ namespace FuturaMkt\Transfer\Meli;
 
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Type\TypeAttribute;
+use FuturaMkt\Type\TypeStatus;
+
 
 class ProductTransfer{
 
@@ -15,6 +17,14 @@ class ProductTransfer{
             "condition"           => $product->getCondition()->value,
             "attributes"          => MeliFuncUtils::convertAttr($product->getAttributes(TypeAttribute::Datasheet)),
         );
+
+        //when it will be grid, quantity will be the sum in all of them...
+        $statusType = $product->getStatus();
+        if(($product->getQuantity() <= 0)){
+            $statusType = TypeStatus::Inactive;
+        }
+
+        $productJson = array_merge_recursive($productJson, array("status" => $statusType));
 
         if($product->hasVariation()){
             $productJson["pictures"]        = MeliFuncUtils::convertPicture($product->getAllVariationImages());
@@ -54,10 +64,15 @@ class ProductTransfer{
         //Setting the code of the image on meli...
         if ($product->hasVariation()){
             $position = 0;
-            $images = MeliFuncUtils::meliGetAllPicturesID($meliProduct);
+            $images   = MeliFuncUtils::meliGetAllPicturesID($meliProduct);
             foreach($product->getAllVariationImages() as $image){
                 $image->setMktCode($images[$position]);
                 $position ++;
+            }
+            $posVar  = 0;
+            foreach ($product->getVariationList() as $var){
+                $var->setVariationId(strval($meliProduct['variations'][$posVar]['id']));
+                $posVar ++;
             }
         }else{
             $position = 0;
