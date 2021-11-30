@@ -1,6 +1,0 @@
---2021-11-09 09:59:49--  https://auth.mercadolivre.com.br/authorization?client_id=4752671983518627
-Resolving auth.mercadolivre.com.br (auth.mercadolivre.com.br)... 13.33.108.45, 13.33.108.50, 13.33.108.61, ...
-Connecting to auth.mercadolivre.com.br (auth.mercadolivre.com.br)|13.33.108.45|:443... connected.
-HTTP request sent, awaiting response... 403 Forbidden
-2021-11-09 09:59:49 ERROR 403: Forbidden.
-

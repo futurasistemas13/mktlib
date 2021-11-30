@@ -2,17 +2,33 @@
 
 namespace FuturaMkt\Transfer\Meli;
 
+use FuturaMkt\Type\Product\TypePeriodDate;
+use FuturaMkt\Type\Product\TypeWarranty;
 use FuturaMkt\Type\TypeStatus;
 
 class MeliFuncUtils{
 
     public static function getProductStatus(TypeStatus $status){
+        return match($status){
+            TypeStatus::Active          => 'active',
+            TypeStatus::Inactive        => 'paused'
+        };
+    }
 
-        switch ($status){
-            case TypeStatus::Active: return 'active';
+    public static function getWarrantId(TypeWarranty $warranty){
+        return match($warranty){
+            TypeWarranty::Factory          => '2230279',
+            TypeWarranty::Seller           => '2230280',
+            TypeWarranty::NoWarranty       => '6150835'
+        };
+    }
 
-            case TypeStatus::Inactive: return 'paused';
-        }
+    public static function getWarrantTime(TypePeriodDate $periodtype, int $period){
+        return match($periodtype){
+            TypePeriodDate::Day        => strval($period) . 'dias',
+            TypePeriodDate::Month      => strval($period) . 'meses',
+            TypePeriodDate::Year       => strval($period) . 'anos',
+        };
     }
 
     public static function convertAttr(array $attributes): array

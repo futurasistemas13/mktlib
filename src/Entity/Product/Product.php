@@ -22,6 +22,7 @@ class Product{
     private String $productLink;
     private array  $MktDataReturn;
     private TypeStatus $status;
+    private Warranty $warranty;
 
     public function __construct()
     {
@@ -331,6 +332,24 @@ class Product{
         $this->status = $status;
         return $this;
 
+    }
+
+    /**
+     * @return Warranty
+     */
+    public function getWarranty(): Warranty
+    {
+        return $this->warranty;
+    }
+
+    /**
+     * @param Warranty $warranty
+     * @return Product
+     */
+    public function setWarranty(Warranty $warranty): Product
+    {
+        $this->warranty = $warranty;
+        return $this;
     }
 
 

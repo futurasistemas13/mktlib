@@ -3,6 +3,7 @@
 namespace FuturaMkt\Transfer\Meli;
 
 use FuturaMkt\Entity\Product\Product;
+use FuturaMkt\Type\Product\TypeWarranty;
 use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeStatus;
 
@@ -17,6 +18,17 @@ class ProductTransfer{
             "condition"           => $product->getCondition()->value,
             "attributes"          => MeliFuncUtils::convertAttr($product->getAttributes(TypeAttribute::Datasheet)),
         );
+
+        $productJson['sale_terms'][] = array(
+            "id"        => 'WARRANTY_TYPE',
+            "value_id"  => MeliFuncUtils::getWarrantId($product->getWarranty()->getType())
+        );
+        if($product->getWarranty()->getType() !== TypeWarranty::NoWarranty){
+            $productJson['sale_terms'][] = array(
+                "id"        => 'WARRANTY_TIME',
+                "value_id"  => MeliFuncUtils::getWarrantTime($product->getWarranty()->getUnid(), $product->getWarranty()->getPeriod())
+            );
+        }
 
         //when it will be grid, quantity will be the sum in all of them...
         $statusType = $product->getStatus();
