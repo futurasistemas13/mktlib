@@ -16,6 +16,7 @@
     "require": {
         "guzzlehttp/guzzle": "^7.4",
         "symfony/finder": "^6.0",
-        "symfony/validator": "^6.0"
+        "symfony/validator": "^6.0",
+        "doctrine/annotations": "^1.13"
     }
 }

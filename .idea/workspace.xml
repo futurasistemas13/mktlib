@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="556eb81b-647d-406b-bd25-b6103ae0c35c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Utils/Meli/MeliConstants.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Validator/ProductValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mktlib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mktlib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Product/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transfer/Meli/MeliFuncUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Meli/MeliFuncUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transfer/Meli/ProductTransfer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer/Meli/ProductTransfer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +88,7 @@
       <workItem from="1637841198792" duration="2852000" />
       <workItem from="1637933220065" duration="33000" />
       <workItem from="1637944967711" duration="22211000" />
-      <workItem from="1638214504323" duration="21173000" />
+      <workItem from="1638214504323" duration="22149000" />
     </task>
     <servers />
   </component>
