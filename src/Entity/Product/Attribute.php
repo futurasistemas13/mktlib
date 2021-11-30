@@ -13,7 +13,6 @@ class Attribute{
     private String $name;
 
     /**
-     * @Assert\NotBlank
      * @Assert\NotNull
      */
     private String $value;

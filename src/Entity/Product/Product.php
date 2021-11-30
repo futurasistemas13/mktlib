@@ -21,7 +21,7 @@ class Product{
     private String                  $category_id        = "";
 
     /**
-     * @Assert\Positive
+     * @Assert\PositiveOrZero
      */
     private float                   $price              = 0;
 

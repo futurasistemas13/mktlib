@@ -23,7 +23,7 @@ class MeliProductUtil {
      * @throws HttpMktException
      * @throws GuzzleException
      */
-    function setProduct(Product $product){
+    function setProduct(Product $product): Product{
         $isUpdating  = $product->hasMktPlaceId();
 
         $methodProd = TypeHttp::POST;
@@ -46,7 +46,7 @@ class MeliProductUtil {
             MeliConstants::buildEndPoint(TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
             array('plain_text' => $product->getDescription())
         );
-
+        return $product;
     }
 
 }

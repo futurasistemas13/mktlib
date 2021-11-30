@@ -6,6 +6,7 @@ use FuturaMkt\Entity\Authentication\MktConnection;
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Service\Marketplace;
+use FuturaMkt\Validator\ProductValidator;
 
 class Meli extends Marketplace{
 
@@ -27,9 +28,11 @@ class Meli extends Marketplace{
 
     /**
      * @throws HttpMktException
+     * @throws \Exception|\GuzzleHttp\Exception\GuzzleException
      */
-    public function setProduct(Product $product){
-        $this->productUtil->setProduct($product);
+    public function setProduct(Product $product): Product | array{
+        parent::setProduct($product);
+        return $this->productUtil->setProduct($product);
     }
 
 }

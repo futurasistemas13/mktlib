@@ -13,10 +13,6 @@ use FuturaMkt\Validator\ProductValidator;
 class ProductTransfer{
 
     public  static function productObjectToMeli(Product $product): array{
-        $ProductValidator = new ProductValidator();
-
-        $teste = $ProductValidator->product($product);
-
         $productJson = array(
             "title"               => $product->getTitle(),
             "category_id"         => $product->getCategoryId(),
