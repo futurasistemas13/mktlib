@@ -8,29 +8,6 @@ use FuturaMkt\Type\TypeStatus;
 
 class MeliFuncUtils{
 
-    public static function getProductStatus(TypeStatus $status){
-        return match($status){
-            TypeStatus::Active          => 'active',
-            TypeStatus::Inactive        => 'paused'
-        };
-    }
-
-    public static function getWarrantId(TypeWarranty $warranty){
-        return match($warranty){
-            TypeWarranty::Factory          => '2230279',
-            TypeWarranty::Seller           => '2230280',
-            TypeWarranty::NoWarranty       => '6150835'
-        };
-    }
-
-    public static function getWarrantTime(TypePeriodDate $periodtype, int $period){
-        return match($periodtype){
-            TypePeriodDate::Day        => strval($period) . ' dias',
-            TypePeriodDate::Month      => strval($period) . ' meses',
-            TypePeriodDate::Year       => strval($period) . ' anos',
-        };
-    }
-
     public static function convertAttr(array $attributes): array
     {
         $return = array();

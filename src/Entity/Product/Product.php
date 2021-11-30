@@ -6,23 +6,29 @@ use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeMoeda;
 use FuturaMkt\Type\Product\TypeProductCondition;
 use FuturaMkt\Type\TypeStatus;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class Product{
-    private String    $mktPlaceId         = "";
-    private String    $title              = "";
-    private String    $category_id        = "";
-    private float     $price              = 0;
-    private Int       $quantity           = 0;
-    private TypeMoeda $moeda              = TypeMoeda::BRL;
-    private TypeProductCondition $condition;
-    private array  $attributes;
-    private array  $productImages;
-    private String $description = "";
-    private array  $variationList;
-    private String $productLink;
-    private array  $MktDataReturn;
-    private TypeStatus $status;
-    private Warranty $warranty;
+    private String                  $mktPlaceId         = "";
+
+    /**
+     * @Assert\NotBlank
+     */
+    private String                  $title              = "";
+
+    private String                  $category_id        = "";
+    private float                   $price              = 0;
+    private Int                     $quantity           = 0;
+    private TypeMoeda               $moeda              = TypeMoeda::BRL;
+    private TypeProductCondition    $condition;
+    private array                   $attributes;
+    private array                   $productImages;
+    private String                  $description        = "";
+    private array                   $variationList;
+    private String                  $productLink;
+    private array                   $MktDataReturn;
+    private TypeStatus              $status;
+    private Warranty                $warranty;
 
     public function __construct()
     {
@@ -222,7 +228,6 @@ class Product{
         if($addNotExists){
             $this->attributes[$group->value][] = new Attribute($attrName, $attrValue);
         }
-
         return $this;
     }
 

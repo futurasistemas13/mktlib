@@ -6,11 +6,17 @@ use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Type\Product\TypeWarranty;
 use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeStatus;
+use FuturaMkt\Utils\Meli\MeliConstants;
+use FuturaMkt\Validator\ProductValidator;
 
 
 class ProductTransfer{
 
     public  static function productObjectToMeli(Product $product): array{
+        $ProductValidator = new ProductValidator();
+
+        $teste = $ProductValidator->product($product);
+
         $productJson = array(
             "title"               => $product->getTitle(),
             "category_id"         => $product->getCategoryId(),
@@ -21,22 +27,22 @@ class ProductTransfer{
 
         $productJson['sale_terms'][] = array(
             "id"        => 'WARRANTY_TYPE',
-            "value_id"  => MeliFuncUtils::getWarrantId($product->getWarranty()->getType())
+            "value_id"  => MeliConstants::getWarrantId($product->getWarranty()->getType())
         );
         if($product->getWarranty()->getType() !== TypeWarranty::NoWarranty){
             $productJson['sale_terms'][] = array(
                 "id"        => 'WARRANTY_TIME',
-                "value_name"  => MeliFuncUtils::getWarrantTime($product->getWarranty()->getUnid(), $product->getWarranty()->getPeriod())
+                "value_name"  => MeliConstants::getWarrantTime($product->getWarranty()->getUnid(), $product->getWarranty()->getPeriod())
             );
         }
 
-        //when it will be grid, quantity will be the sum in all of them...
+        //when it will be gridded, quantity will be the sum in all of them...
         $statusType = $product->getStatus();
         if(($product->getQuantity() <= 0)){
             $statusType = TypeStatus::Inactive;
         }
 
-        $productJson = array_merge_recursive($productJson, array("status" => MeliFuncUtils::getProductStatus($statusType)));
+        $productJson = array_merge_recursive($productJson, array("status" => MeliConstants::getProductStatus($statusType)));
 
         if($product->hasVariation()){
             $productJson["pictures"]        = MeliFuncUtils::convertPicture($product->getAllVariationImages());
@@ -68,7 +74,7 @@ class ProductTransfer{
                 $product->setAttribute(TypeAttribute::Datasheet,  $attr['id'], $attr['value_name']);
             }
         }
-        //Upgrading the default atrributes
+        //Upgrading the default attributes
         foreach($meliProduct as $key => $attr){
             $product->setAttribute(TypeAttribute::DefaultAttributes,  $key, $attr, false);
         }
