@@ -7,9 +7,11 @@ use Symfony\Component\Validator\Validation;
 
 class ProductValidator{
 
-    public function product(Product $product)
+    public function validate(Product $product)
     {
         $validator = Validation::createValidatorBuilder()
+            ->enableAnnotationMapping(true)
+            ->addDefaultDoctrineAnnotationReader()
             ->getValidator();
         $errors = $validator->validate($product);
         $errorsString = '';

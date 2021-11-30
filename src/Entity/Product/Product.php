@@ -9,25 +9,48 @@ use FuturaMkt\Type\TypeStatus;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Product{
+
     private String                  $mktPlaceId         = "";
 
     /**
      * @Assert\NotBlank
+     * @Assert\NotNull
      */
     private String                  $title              = "";
 
     private String                  $category_id        = "";
+
+    /**
+     * @Assert\Positive
+     */
     private float                   $price              = 0;
+
+    /**
+     * @Assert\PositiveOrZero
+     */
     private Int                     $quantity           = 0;
+
     private TypeMoeda               $moeda              = TypeMoeda::BRL;
+
     private TypeProductCondition    $condition;
+
     private array                   $attributes;
+
     private array                   $productImages;
+
     private String                  $description        = "";
+
     private array                   $variationList;
+
+    /**
+     * @Assert\Url
+     */
     private String                  $productLink;
+
     private array                   $MktDataReturn;
+
     private TypeStatus              $status;
+
     private Warranty                $warranty;
 
     public function __construct()

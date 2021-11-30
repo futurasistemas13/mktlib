@@ -2,8 +2,20 @@
 
 namespace FuturaMkt\Entity\Product;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class Attribute{
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     */
     private String $name;
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     */
     private String $value;
 
     function __construct(String $name = '', String $value = '')

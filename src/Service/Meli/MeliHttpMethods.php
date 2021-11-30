@@ -73,6 +73,7 @@ class MeliHttpMethods{
                     'Authorization'  => 'Bearer ' . $this->getAccessToken()
                 ]);
         }
+
         $cliParams['form_params'] = $dataJson;
 
         try{

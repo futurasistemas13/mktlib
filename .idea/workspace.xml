@@ -5,6 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/mktlib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mktlib.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/Attribute.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/Attribute.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/ProductImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/ProductImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/ProductVariation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/ProductVariation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/Warranty.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/Warranty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/Meli/MeliHttpMethods.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Meli/MeliHttpMethods.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/ProductValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/ProductValidator.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +47,12 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
     </include_path>
   </component>
   <component name="ProjectId" id="20VeUCXe9yfTztQjBctNG0lpEXR" />
@@ -93,7 +106,7 @@
       <workItem from="1637841198792" duration="2852000" />
       <workItem from="1637933220065" duration="33000" />
       <workItem from="1637944967711" duration="22211000" />
-      <workItem from="1638214504323" duration="23253000" />
+      <workItem from="1638214504323" duration="25592000" />
     </task>
     <servers />
   </component>

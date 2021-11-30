@@ -4,11 +4,17 @@ namespace FuturaMkt\Entity\Product;
 
 use FuturaMkt\Type\TypePeriodDate;
 use FuturaMkt\Type\Product\TypeWarranty;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class Warranty
 {
     private TypeWarranty $type   = TypeWarranty::NoWarranty;
+
+    /**
+     * @Assert\PositiveOrZero
+     */
     private int $period          = 0;
+
     private TypePeriodDate $unid;
 
     /**

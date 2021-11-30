@@ -2,18 +2,33 @@
 
 namespace FuturaMkt\Entity\Product;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class ProductVariation
 {
     private String $variationId = '';
+
     private array  $attributes;
+
+    /**
+     * @Assert\Positive
+     */
     private float  $price;
+
+    /**
+     * @Assert\PositiveOrZero
+     */
     private Int    $quantity = 0;
+
     private array  $productImages;
+
 
     public function __construct()
     {
-        //
+        $this->attributes    = array();
+        $this->productImages = array();
     }
+
     /**
      * @return float
      */

@@ -2,9 +2,17 @@
 
 namespace FuturaMkt\Entity\Product;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class ProductImage{
 
+    /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\url
+     */
     private String $imageLink;
+
     private String $mktCode;
 
     public function __construct(String $imgLink = '', String $mktCod = '')
