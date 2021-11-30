@@ -2,7 +2,7 @@
 
 namespace FuturaMkt\Transfer\Meli;
 
-use FuturaMkt\Type\Product\TypePeriodDate;
+use FuturaMkt\Type\TypePeriodDate;
 use FuturaMkt\Type\Product\TypeWarranty;
 use FuturaMkt\Type\TypeStatus;
 
@@ -25,9 +25,9 @@ class MeliFuncUtils{
 
     public static function getWarrantTime(TypePeriodDate $periodtype, int $period){
         return match($periodtype){
-            TypePeriodDate::Day        => strval($period) . 'dias',
-            TypePeriodDate::Month      => strval($period) . 'meses',
-            TypePeriodDate::Year       => strval($period) . 'anos',
+            TypePeriodDate::Day        => strval($period) . ' dias',
+            TypePeriodDate::Month      => strval($period) . ' meses',
+            TypePeriodDate::Year       => strval($period) . ' anos',
         };
     }
 

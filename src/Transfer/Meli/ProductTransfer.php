@@ -26,7 +26,7 @@ class ProductTransfer{
         if($product->getWarranty()->getType() !== TypeWarranty::NoWarranty){
             $productJson['sale_terms'][] = array(
                 "id"        => 'WARRANTY_TIME',
-                "value_id"  => MeliFuncUtils::getWarrantTime($product->getWarranty()->getUnid(), $product->getWarranty()->getPeriod())
+                "value_name"  => MeliFuncUtils::getWarrantTime($product->getWarranty()->getUnid(), $product->getWarranty()->getPeriod())
             );
         }
 
@@ -36,7 +36,7 @@ class ProductTransfer{
             $statusType = TypeStatus::Inactive;
         }
 
-        $productJson = array_merge_recursive($productJson, array("status" => $statusType));
+        $productJson = array_merge_recursive($productJson, array("status" => MeliFuncUtils::getProductStatus($statusType)));
 
         if($product->hasVariation()){
             $productJson["pictures"]        = MeliFuncUtils::convertPicture($product->getAllVariationImages());
