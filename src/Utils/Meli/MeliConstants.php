@@ -8,6 +8,8 @@ use FuturaMkt\Type\TypeStatus;
 
 class MeliConstants{
 
+    const endPoint = 'https://api.mercadolibre.com';
+
     /**
      * @param TypeStatus $status
      * @return string

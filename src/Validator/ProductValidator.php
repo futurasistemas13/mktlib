@@ -3,24 +3,18 @@
 namespace FuturaMkt\Validator;
 
 use FuturaMkt\Entity\Product\Product;
-use Symfony\Component\Validator\Validation;
 
-class ProductValidator{
+class ProductValidator extends BaseValidator {
 
     public function validate(Product $product): array
     {
-        $validator = Validation::createValidatorBuilder()
-            ->enableAnnotationMapping(true)
-            ->addDefaultDoctrineAnnotationReader()
-            ->getValidator();
-
-        $errors = $validator->validate($product);
-        $errorsString = array();
-        if (count($errors) > 0) {
-            $errorsString = $errors;
-        }
-
-        return $errorsString;
+        return $this->validateBase($product)
+                    ->validateBase($product->getWarranty())
+                    ->validateBaseArrayObjects($product->getImages())
+                    ->validateBaseArrayObjects($product->getAllVariationImages())->toArray();
+        //todo: Validate attributes
+        //todo: validade attributes variations
+        //todo: validate attribute of atrribute variations
     }
 
 }

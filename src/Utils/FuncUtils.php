@@ -1,11 +1,11 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace FuturaMkt\Service\Meli;
+namespace FuturaMkt\Utils;
 
-class MeliConstants{
+use FuturaMkt\Utils\Meli\MeliConstants;
 
-    const endPoint = 'https://api.mercadolibre.com';
-
+class FuncUtils
+{
     public static function buildEndPoint($route, array $params = null): String
     {
         $UrlParams = explode('/', $route);
@@ -23,6 +23,7 @@ class MeliConstants{
                 }
             }
         }
-        return self::endPoint . implode('/', $UrlParams);
+        return MeliConstants::endPoint . implode('/', $UrlParams);
     }
+
 }
