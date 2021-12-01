@@ -36,11 +36,11 @@ class Product{
 
     /**
      * @Assert\All({
-     *    @Assert\Type("FuturaMkt\Entity\Product\Attribute")
+     *    @Assert\Type("FuturaMkt\Entity\Product\AttributeGroup")
      * })
      * @Assert\Valid
      */
-    private array                   $attributes;
+    private array                   $attributeGroups;
 
     /**
      * @Assert\All({
@@ -80,7 +80,7 @@ class Product{
     {
         $this->variationList     = array();
         $this->MktDataReturn     = array();
-        $this->attributes        = array();
+        $this->attributeGroups   = array();
         $this->warranty          = new Warranty();
         $this->productImages     = array();
     }
@@ -247,38 +247,41 @@ class Product{
         return $this;
     }
 
+
+
     /**
      * @param TypeAttribute $group
      * @return array
      */
     public function getAttributes(TypeAttribute $group): array
     {
-        return ((array_key_exists($group->value, $this->attributes))  && (is_array($this->attributes[$group->value]))) ?  $this->attributes[$group->value] : array();
-    }
-
-    public function getAttributesAll(): array
-    {
-        return $this->attributes;
+        foreach ($this->attributeGroups as $attr){
+            if($attr->getAttributeGroup() == $group){
+                return $attr->getAttribute();
+            }
+        }
+        return array();
+        //return ((array_key_exists($group->value, $this->attributes))  && (is_array($this->attributes[$group->value]))) ?  $this->attributes[$group->value] : array();
     }
 
     /**
      * @param TypeAttribute $group
      * @param String $attrName
      * @param String $attrValue
+     * @param bool $addNotExists
      * @return Product
      */
     public function setAttribute(TypeAttribute $group, String $attrName, mixed $attrValue, bool $addNotExists = true): Product
     {
-        if(array_key_exists($group->value, $this->attributes)){
-            foreach($this->attributes[$group->value] as $attr){
-                if(strtolower($attr->getName()) == $attrName){
-                    $attr->setValue($attrValue);
-                    return $this;
-                }
+        foreach ($this->attributeGroups as $attr){
+            if($attr->getAttribute() == $group){
+                $attr->setAttribute(new Attribute($attrName, $attrValue));
+                return $this;
             }
         }
+
         if($addNotExists){
-            $this->attributes[$group->value][] = new Attribute($attrName, $attrValue);
+            $this->attributeGroups[] = new AttributeGroup($group, $attrName, $attrValue);
         }
         return $this;
     }
@@ -289,8 +292,8 @@ class Product{
     public function getAllVariationImages(): array
     {
         $return = array();
-        foreach ($this->getVariationList() as $variat){
-            $return = array_merge_recursive($return, $variat->getProductImages());
+        foreach ($this->getVariationList() as $variate){
+            $return = array_merge_recursive($return, $variate->getProductImages());
         }
         return $return;
     }
@@ -305,7 +308,7 @@ class Product{
 
     /**
      * @param String $productImage
-     * @param $productImageId
+     * @param String $productImageId
      * @return Product
      */
     public function setImage(String $productImage, String $productImageId = ''): Product

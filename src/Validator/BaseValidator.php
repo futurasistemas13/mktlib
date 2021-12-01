@@ -8,6 +8,7 @@ class BaseValidator
 {
 
     private array $validationList = array();
+
     public function __construct()
     {
         //
@@ -26,27 +27,6 @@ class BaseValidator
         $error = $validatorObject->validate($entity);
         if(count($error) > 0) {
             $this->validationList[$entity::class] = $error;
-        }
-        return $this;
-    }
-
-    /**
-     * @param array $entityList
-     * @return BaseValidator
-     */
-    protected function validateBaseArrayObjects(array $entityList): BaseValidator
-    {
-        $validatorObject = Validation::createValidatorBuilder()
-            ->enableAnnotationMapping()
-            ->addDefaultDoctrineAnnotationReader()
-            ->getValidator();
-        $count = 0;
-        foreach ($entityList as $entity){
-            $error = $validatorObject->validate($entity);
-            if(count($error) > 0){
-                $this->validationList[$entity::class . '[' . $count . ']'] =  $error;
-                $count ++;
-            }
         }
         return $this;
     }
