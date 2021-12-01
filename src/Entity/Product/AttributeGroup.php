@@ -34,10 +34,12 @@ class AttributeGroup
 
     /**
      * @param TypeAttribute $attributeGroup
+     * @return AttributeGroup
      */
-    public function setAttributeGroup(TypeAttribute $attributeGroup): void
+    public function setAttributeGroup(TypeAttribute $attributeGroup): AttributeGroup
     {
         $this->attributeGroup = $attributeGroup;
+        return $this;
     }
 
     /**
@@ -49,11 +51,13 @@ class AttributeGroup
     }
 
     /**
-     * @param array $attribute
+     * @param \FuturaMkt\Entity\Product\Attribute $attribute
+     * @return AttributeGroup
      */
-    public function setAttribute(Attribute $attribute): void
+    public function setAttribute(Attribute $attribute): AttributeGroup
     {
         $this->attribute[] = $attribute;
+        return $this;
     }
 
 }

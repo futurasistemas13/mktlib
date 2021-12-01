@@ -11,12 +11,13 @@ class Attribute{
      * @Assert\NotNull
      */
     private String $name;
+
     private mixed $value;
 
-    function __construct(String $name = '', String $value = '')
+    function __construct(String $name = '', mixed $value = '')
     {
-         $this->setName($name);
-         $this->setValue($value);
+        $this->setName($name);
+        $this->setValue($value);
     }
 
     /**
@@ -29,25 +30,29 @@ class Attribute{
 
     /**
      * @param string $name
+     * @return Attribute
      */
-    public function setName(string $name): void
+    public function setName(string $name): Attribute
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getValue(): string
+    public function getValue(): mixed
     {
         return $this->value;
     }
 
     /**
-     * @param string $value
+     * @param mixed $value
+     * @return Attribute
      */
-    public function setValue(string $value): void
+    public function setValue(mixed $value): Attribute
     {
         $this->value = $value;
+        return $this;
     }
 }

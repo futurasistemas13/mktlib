@@ -6,42 +6,25 @@ use Symfony\Component\Validator\Validation;
 
 class BaseValidator
 {
-
-    private array $validationList = array();
-
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * @param mixed $entity
-     * @return BaseValidator
+     * @return array
      */
-    protected function validateBase(mixed $entity): BaseValidator
+    protected function validateBase(mixed $entity): array
     {
         $validatorObject = Validation::createValidatorBuilder()
             ->enableAnnotationMapping()
             ->addDefaultDoctrineAnnotationReader()
             ->getValidator();
-        $error = $validatorObject->validate($entity);
-        if(count($error) > 0) {
-            $this->validationList[$entity::class] = $error;
-        }
-        return $this;
-    }
+        $errorList = $validatorObject->validate($entity);
 
-    /**
-     * @return array
-     */
-    public function toArray(): array{
         $fieldError = array();
-        foreach ($this->validationList as $key => $errorList){
-            foreach($errorList as $error){
+        foreach ($errorList as $key => $error){
                 $fieldError[$key . '.' . $error->getPropertyPath()] = $error->getMessage();
-            }
         }
         return $fieldError;
     }
+
+
 
 }
