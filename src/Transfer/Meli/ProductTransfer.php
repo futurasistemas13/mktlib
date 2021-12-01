@@ -7,7 +7,7 @@ use FuturaMkt\Type\Product\TypeWarranty;
 use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeStatus;
 use FuturaMkt\Utils\Meli\MeliConstants;
-use FuturaMkt\Validator\ProductValidator;
+use FuturaMkt\Utils\Meli\MeliFuncUtils;
 
 
 class ProductTransfer{

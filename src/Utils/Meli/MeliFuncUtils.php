@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace FuturaMkt\Transfer\Meli;
+namespace FuturaMkt\Utils\Meli;
 
 use FuturaMkt\Type\TypePeriodDate;
 use FuturaMkt\Type\Product\TypeWarranty;
