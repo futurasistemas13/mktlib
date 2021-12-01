@@ -10,13 +10,6 @@ class AttributeGroup
 {
     private TypeAttribute $attributeGroup;
 
-
-    public function __construct(TypeAttribute $group = TypeAttribute::DefaultAttributes, string $name = '', string $value = '')
-    {
-        $this->setAttributeGroup($group);
-        $this->setAttribute(new Attribute($name, $value));
-    }
-
     /**
      * @Assert\All({
      *    @Assert\Type("FuturaMkt\Entity\Product\Attribute")
@@ -24,6 +17,12 @@ class AttributeGroup
      * @Assert\Valid
      */
     private array         $attribute;
+
+    public function __construct(TypeAttribute $group = TypeAttribute::DefaultAttributes, string $name = '', string $value = '')
+    {
+        $this->setAttributeGroup($group);
+        $this->setAttribute(new Attribute($name, $value));
+    }
 
     /**
      * @return TypeAttribute

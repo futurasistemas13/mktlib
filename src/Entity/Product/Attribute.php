@@ -11,11 +11,7 @@ class Attribute{
      * @Assert\NotNull
      */
     private String $name;
-
-    /**
-     * @Assert\NotNull
-     */
-    private String $value;
+    private mixed $value;
 
     function __construct(String $name = '', String $value = '')
     {

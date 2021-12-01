@@ -274,7 +274,7 @@ class Product{
     public function setAttribute(TypeAttribute $group, String $attrName, mixed $attrValue, bool $addNotExists = true): Product
     {
         foreach ($this->attributeGroups as $attr){
-            if($attr->getAttribute() == $group){
+            if($attr->getAttributeGroup() == $group){
                 $attr->setAttribute(new Attribute($attrName, $attrValue));
                 return $this;
             }
