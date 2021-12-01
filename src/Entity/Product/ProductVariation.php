@@ -8,6 +8,12 @@ class ProductVariation
 {
     private String $variationId = '';
 
+    /**
+     * @Assert\All({
+     *    @Assert\Type("FuturaMkt\Entity\Product\Attribute")
+     * })
+     * @Assert\Valid
+     */
     private array  $attributes;
 
     /**
@@ -20,6 +26,12 @@ class ProductVariation
      */
     private Int    $quantity = 0;
 
+    /**
+     * @Assert\All({
+     *    @Assert\Type("FuturaMkt\Entity\Product\ProductImage")
+     * })
+     * @Assert\Valid
+     */
     private array  $productImages;
 
 

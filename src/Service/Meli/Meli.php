@@ -31,7 +31,7 @@ class Meli extends Marketplace{
      * @throws HttpMktException
      * @throws Exception|GuzzleException
      */
-    public function setProduct(Product $product): Product | array{
+    public function setProduct(Product $product): Product{
         parent::setProduct($product);
         return $this->productUtil->setProduct($product);
     }

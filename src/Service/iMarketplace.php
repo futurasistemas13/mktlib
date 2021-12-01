@@ -7,7 +7,7 @@ use FuturaMkt\Entity\Product\Product;
 
 interface iMarketplace{
 
-    public function setProduct(Product $product);
+    public function setProduct(Product $product): Product;
     public function setAuthentication(MktConnection $data): void;
 
 }

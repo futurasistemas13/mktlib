@@ -18,7 +18,7 @@ class Marketplace implements iMarketplace{
     /**
      * @throws Exception
      */
-    public function setProduct(Product $product): Product|array{
+    public function setProduct(Product $product): Product{
         $ProductValidator = new ProductValidator();
         $errors           = $ProductValidator->validate($product);
         if (count($errors) > 0) {

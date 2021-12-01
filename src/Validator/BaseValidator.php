@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Validation;
 class BaseValidator
 {
 
-    private array $validationList;
+    private array $validationList = array();
     public function __construct()
     {
         //

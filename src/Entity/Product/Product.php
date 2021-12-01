@@ -34,12 +34,30 @@ class Product{
 
     private TypeProductCondition    $condition;
 
+    /**
+     * @Assert\All({
+     *    @Assert\Type("FuturaMkt\Entity\Product\Attribute")
+     * })
+     * @Assert\Valid
+     */
     private array                   $attributes;
 
+    /**
+     * @Assert\All({
+     *    @Assert\Type("FuturaMkt\Entity\Product\ProductImage")
+     * })
+     * @Assert\Valid
+     */
     private array                   $productImages;
 
     private String                  $description        = "";
 
+    /**
+     * @Assert\All({
+     *    @Assert\Type("FuturaMkt\Entity\Product\ProductVariation")
+     * })
+     * @Assert\Valid
+     */
     private array                   $variationList;
 
     /**
@@ -51,6 +69,11 @@ class Product{
 
     private TypeStatus              $status;
 
+
+    /**
+     * @Assert\Type("FuturaMkt\Entity\Product\Warranty")
+     * @Assert\Valid
+     */
     private Warranty                $warranty;
 
     public function __construct()
@@ -231,6 +254,11 @@ class Product{
     public function getAttributes(TypeAttribute $group): array
     {
         return ((array_key_exists($group->value, $this->attributes))  && (is_array($this->attributes[$group->value]))) ?  $this->attributes[$group->value] : array();
+    }
+
+    public function getAttributesAll(): array
+    {
+        return $this->attributes;
     }
 
     /**
