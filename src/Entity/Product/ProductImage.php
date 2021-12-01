@@ -9,7 +9,9 @@ class ProductImage{
     /**
      * @Assert\NotBlank
      * @Assert\NotNull
-     * @Assert\url
+     * @Assert\url(
+     *      message="the URL '{{ value }}' is not a valid url"
+     * )
      */
     private String $imageLink;
 

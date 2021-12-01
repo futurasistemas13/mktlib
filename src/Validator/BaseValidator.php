@@ -2,10 +2,7 @@
 
 namespace FuturaMkt\Validator;
 
-use Symfony\Component\Validator\ConstraintViolationList;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class BaseValidator
 {
@@ -27,12 +24,14 @@ class BaseValidator
             ->addDefaultDoctrineAnnotationReader()
             ->getValidator();
         $error = $validatorObject->validate($entity);
-        $this->validationList[$entity::class] =  $error;
+        if(count($error) > 0) {
+            $this->validationList[$entity::class] = $error;
+        }
         return $this;
     }
 
     /**
-     * @param mixed $entity
+     * @param array $entityList
      * @return BaseValidator
      */
     protected function validateBaseArrayObjects(array $entityList): BaseValidator
@@ -41,13 +40,20 @@ class BaseValidator
             ->enableAnnotationMapping()
             ->addDefaultDoctrineAnnotationReader()
             ->getValidator();
+        $count = 0;
         foreach ($entityList as $entity){
             $error = $validatorObject->validate($entity);
-            $this->validationList[$entity::class] =  $error;
+            if(count($error) > 0){
+                $this->validationList[$entity::class . '[' . $count . ']'] =  $error;
+                $count ++;
+            }
         }
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array{
         $fieldError = array();
         foreach ($this->validationList as $key => $errorList){

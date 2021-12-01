@@ -59,6 +59,7 @@ class Product{
         $this->MktDataReturn     = array();
         $this->attributes        = array();
         $this->warranty          = new Warranty();
+        $this->productImages     = array();
     }
 
     /**
@@ -271,7 +272,7 @@ class Product{
      */
     public function getImages(): array
     {
-        return is_array($this->productImages) ? $this->productImages : array();
+        return $this->productImages;
     }
 
     /**

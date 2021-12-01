@@ -2,11 +2,9 @@
 
 namespace FuturaMkt\Utils;
 
-use FuturaMkt\Utils\Meli\MeliConstants;
-
 class FuncUtils
 {
-    public static function buildEndPoint($route, array $params = null): String
+    public static function buildEndPoint(String $endPoint, String $route, array $params = null): String
     {
         $UrlParams = explode('/', $route);
         $count = 0;
@@ -23,7 +21,7 @@ class FuncUtils
                 }
             }
         }
-        return MeliConstants::endPoint . implode('/', $UrlParams);
+        return $endPoint . implode('/', $UrlParams);
     }
 
 }

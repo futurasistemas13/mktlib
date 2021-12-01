@@ -2,11 +2,12 @@
 
 namespace FuturaMkt\Service\Meli;
 
+use Exception;
 use FuturaMkt\Entity\Authentication\MktConnection;
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Service\Marketplace;
-use FuturaMkt\Validator\ProductValidator;
+use GuzzleHttp\Exception\GuzzleException;
 
 class Meli extends Marketplace{
 
@@ -28,7 +29,7 @@ class Meli extends Marketplace{
 
     /**
      * @throws HttpMktException
-     * @throws \Exception|\GuzzleHttp\Exception\GuzzleException
+     * @throws Exception|GuzzleException
      */
     public function setProduct(Product $product): Product | array{
         parent::setProduct($product);

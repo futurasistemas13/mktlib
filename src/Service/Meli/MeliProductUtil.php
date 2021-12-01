@@ -7,7 +7,9 @@ use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Transfer\Meli\ProductTransfer;
 use FuturaMkt\Type\Http\TypeHttp;
 use FuturaMkt\Type\Meli\TypeMeliEndPoints;
+use FuturaMkt\Utils\FuncUtils;
 use GuzzleHttp\Exception\GuzzleException;
+use FuturaMkt\Utils\Meli\MeliConstants;
 
 class MeliProductUtil {
 
@@ -36,14 +38,14 @@ class MeliProductUtil {
 
         $responseProduct = $this->meliHttp->requestBodyAuthentication(
             $methodProd,
-            MeliConstants::buildEndPoint(TypeMeliEndPoints::Product->value, $paramsProd),
+            FuncUtils::buildEndPoint(MeliConstants::endPoint,TypeMeliEndPoints::Product->value, $paramsProd),
             $productJson
         );
         ProductTransfer::meliToProductObject($responseProduct, $product);
 
         $responseDescription = $this->meliHttp->requestBodyAuthentication(
             $methodProd,
-            MeliConstants::buildEndPoint(TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
+            FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
             array('plain_text' => $product->getDescription())
         );
         return $product;

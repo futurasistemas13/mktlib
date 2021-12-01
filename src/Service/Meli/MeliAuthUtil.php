@@ -4,8 +4,12 @@
 namespace FuturaMkt\Service\Meli;
 
 use FuturaMkt\Entity\Authentication\MktConnection;
+use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Type\Http\TypeHttp;
 use FuturaMkt\Type\Meli\TypeMeliEndPoints;
+use FuturaMkt\Utils\FuncUtils;
+use FuturaMkt\Utils\Meli\MeliConstants;
+use GuzzleHttp\Exception\GuzzleException;
 
 class MeliAuthUtil{
 
@@ -48,9 +52,13 @@ class MeliAuthUtil{
         }
     }
 
+    /**
+     * @throws GuzzleException
+     * @throws HttpMktException
+     */
     private function cliToken(MktConnection $data, array $form): MktConnection
     {
-        $jsonResp = $this->meliHttpMethods->requestForm(TypeHttp::POST, MeliConstants::buildEndPoint(TypeMeliEndPoints::AuthToken->value), $form);
+        $jsonResp = $this->meliHttpMethods->requestForm(TypeHttp::POST, FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::AuthToken->value), $form);
 
         if (isset($jsonResp['access_token'])){
             $data->setAccessToken($jsonResp['access_token']);
