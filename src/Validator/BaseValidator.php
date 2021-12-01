@@ -15,12 +15,13 @@ class BaseValidator
         $validatorObject = Validation::createValidatorBuilder()
             ->enableAnnotationMapping()
             ->addDefaultDoctrineAnnotationReader()
+            ->addYamlMapping('Config/Validator/Product/Meli/MeliProductValidator.yaml')
             ->getValidator();
         $errorList = $validatorObject->validate($entity);
 
         $fieldError = array();
-        foreach ($errorList as $key => $error){
-                $fieldError[$key . '.' . $error->getPropertyPath()] = $error->getMessage();
+        foreach ($errorList as $error){
+                $fieldError[$error->getPropertyPath()] = $error->getMessage();
         }
         return $fieldError;
     }

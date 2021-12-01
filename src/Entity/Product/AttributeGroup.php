@@ -2,7 +2,6 @@
 
 namespace FuturaMkt\Entity\Product;
 
-use FuturaMkt\Entity\Product\Attribute;
 use FuturaMkt\Type\TypeAttribute;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -51,7 +50,7 @@ class AttributeGroup
     }
 
     /**
-     * @param \FuturaMkt\Entity\Product\Attribute $attribute
+     * @param Attribute $attribute
      * @return AttributeGroup
      */
     public function setAttribute(Attribute $attribute): AttributeGroup

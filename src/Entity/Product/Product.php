@@ -10,29 +10,29 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Product{
 
-    private String                  $mktPlaceId         = "";
+    private String $mktPlaceId = "";
 
     /**
      * @Assert\NotBlank
      * @Assert\NotNull
      */
-    private String                  $title              = "";
+    private String $title = "";
 
-    private String                  $category_id        = "";
-
-    /**
-     * @Assert\PositiveOrZero
-     */
-    private float                   $price              = 0;
+    private String $category_id = "";
 
     /**
      * @Assert\PositiveOrZero
      */
-    private Int                     $quantity           = 0;
+    private float $price = 0;
 
-    private TypeMoeda               $moeda              = TypeMoeda::BRL;
+    /**
+     * @Assert\PositiveOrZero
+     */
+    private Int $quantity = 0;
 
-    private TypeProductCondition    $condition;
+    private TypeMoeda $moeda = TypeMoeda::BRL;
+
+    private TypeProductCondition $condition;
 
     /**
      * @Assert\All({
@@ -40,7 +40,7 @@ class Product{
      * })
      * @Assert\Valid
      */
-    private array                   $attributeGroups;
+    private array $attributeGroups;
 
     /**
      * @Assert\All({
@@ -48,9 +48,9 @@ class Product{
      * })
      * @Assert\Valid
      */
-    private array                   $productImages;
+    private array $productImages;
 
-    private String                  $description        = "";
+    private String $description        = "";
 
     /**
      * @Assert\All({
@@ -58,16 +58,16 @@ class Product{
      * })
      * @Assert\Valid
      */
-    private array                   $variationList;
+    private array $variationList;
 
     /**
      * @Assert\Url
      */
-    private String                  $productLink;
+    private String $productLink;
 
-    private array                   $MktDataReturn;
+    private array $MktDataReturn;
 
-    private TypeStatus              $status;
+    private TypeStatus $status;
 
 
     /**
@@ -261,7 +261,6 @@ class Product{
             }
         }
         return array();
-        //return ((array_key_exists($group->value, $this->attributes))  && (is_array($this->attributes[$group->value]))) ?  $this->attributes[$group->value] : array();
     }
 
     /**
