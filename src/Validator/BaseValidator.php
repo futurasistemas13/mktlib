@@ -3,6 +3,7 @@
 namespace FuturaMkt\Validator;
 
 use Symfony\Component\Validator\Validation;
+use const FuturaMkt\COMPONENT_PATH;
 
 class BaseValidator
 {
@@ -15,7 +16,7 @@ class BaseValidator
         $validatorObject = Validation::createValidatorBuilder()
             ->enableAnnotationMapping()
             ->addDefaultDoctrineAnnotationReader()
-            ->addYamlMapping('Config/Validator/Product/Meli/MeliProductValidator.yaml')
+            ->addYamlMapping(COMPONENT_PATH . 'Config/Validator/Product/Meli/MeliProductValidator.yaml')
             ->getValidator();
         $errorList = $validatorObject->validate($entity);
 
