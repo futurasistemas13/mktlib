@@ -9,7 +9,6 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class HasAttributeNameValidator extends ConstraintValidator
 {
-
     /**
      * @throws Exception
      */
@@ -22,7 +21,9 @@ class HasAttributeNameValidator extends ConstraintValidator
         if (is_array($value)){
             if($value[array_key_first($value)] instanceof AttributeGroup){
                 foreach ($value as $attrGroupList){
-                    return $this->validateAttr($attrGroupList->getAttribute(), $constraint);
+                    if($this->validateAttr($attrGroupList->getAttribute(), $constraint)){
+                        return true;
+                    }
                 }
             }else{
                 return $this->validateAttr($value, $constraint);
@@ -36,16 +37,12 @@ class HasAttributeNameValidator extends ConstraintValidator
         return false;
     }
 
-    private function validateAttr($attributeList, Constraint $constraint): bool{
+    private function validateAttr(array $attributeList, Constraint $constraint): bool{
         foreach ($attributeList as $attr){
             if($attr->getName() == $constraint->attrName){
                 return true;
             }
         }
-        $this->context->addViolation(
-            $constraint->message,
-            array('{{ attrValue }}' => $constraint->attrName)
-        );
         return false;
     }
 }

@@ -21,7 +21,7 @@ class MeliProductValidator extends ProductValidator
         }else{
             $group = array_merge_recursive(array(TypeGroupsValidation::Default->value), $group);
         }
-        return parent::validateProduct($product, RootConstants::getPathDir() . '/Config/ValidatorMarketplace/Product/Meli/MeliProductValidator.yaml', $group);
+        return parent::validateProduct($product, RootConstants::getPathDir() . '/Config/Validator/Product/Meli/MeliProductValidator.yaml', $group);
     }
 
 }
