@@ -16,7 +16,6 @@ class AttributeGroup
      * @Assert\Valid
      */
     private array         $attribute;
-    private $teste = 'teste';
 
     public function __construct(TypeAttribute $group = TypeAttribute::DefaultAttributes, string $name = '', string $value = '')
     {

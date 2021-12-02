@@ -39,7 +39,7 @@ class Product{
      * @Assert\All({
      *    @Assert\Type("FuturaMkt\Entity\Product\AttributeGroup")
      * })
-     * @MyAssert\HasAttributeValue(attrname="name")
+     * @MyAssert\HasAttributeValue(attrName="attribute", attrValue="listing_type_id")
      * @Assert\Valid
      */
     private array $attributeGroups;

@@ -15,6 +15,7 @@ use Symfony\Component\Validator\Constraint;
 class HasAttributeValue extends Constraint
 {
 
-    public String $attrname = '';
+    public String $attrValue = '';
+    public String $message   = 'the attribute name does not have a value:  {{ attrValue }}';
 
 }
