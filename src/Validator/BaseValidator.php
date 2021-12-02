@@ -12,7 +12,7 @@ class BaseValidator
      * @param string $yamlPathValidator
      * @return array
      */
-    protected function validateBase(mixed $entity, string $yamlPathValidator = '', String $group = 'default'): array
+    protected function validateBase(mixed $entity, string $yamlPathValidator = '', array $group = array('default')): array
     {
         $validatorObject = Validation::createValidatorBuilder()
                             ->enableAnnotationMapping()

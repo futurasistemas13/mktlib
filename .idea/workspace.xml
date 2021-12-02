@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="556eb81b-647d-406b-bd25-b6103ae0c35c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Type/Validation/TypeGroupsValidation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Validator/ValidatorMarketplace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/Marketplace.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Marketplace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/Meli/Meli.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Meli/Meli.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/BaseValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/BaseValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/Meli/Product/MeliProductValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/Meli/Product/MeliProductValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/ProductValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/ProductValidator.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +121,7 @@
       <workItem from="1637933220065" duration="33000" />
       <workItem from="1637944967711" duration="22211000" />
       <workItem from="1638214504323" duration="29549000" />
-      <workItem from="1638360872982" duration="29526000" />
+      <workItem from="1638360872982" duration="32625000" />
     </task>
     <servers />
   </component>

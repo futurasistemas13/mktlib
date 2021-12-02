@@ -7,7 +7,7 @@ use FuturaMkt\RootConstants;
 
 class ProductValidator extends BaseValidator {
 
-    public function validateProduct(Product $product, $validatorFile, $group): array
+    public function validateProduct(Product $product, String $validatorFile, array $group): array
     {
         return $this->validateBase($product, $validatorFile, $group);
     }

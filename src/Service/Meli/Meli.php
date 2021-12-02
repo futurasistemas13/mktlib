@@ -7,6 +7,7 @@ use FuturaMkt\Entity\Authentication\MktConnection;
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Service\Marketplace;
+use FuturaMkt\Type\TypeMarketplaces;
 use GuzzleHttp\Exception\GuzzleException;
 
 class Meli extends Marketplace{
@@ -20,6 +21,7 @@ class Meli extends Marketplace{
         $this->meliHttp     = new MeliHttpMethods();
         $this->meliAuth     = new MeliAuthUtil($this->meliHttp);
         $this->productUtil  = new MeliProductUtil($this->meliHttp);
+        parent::setMarketplaceType(TypeMarketplaces::MercadoLivre);
     }
 
     public function setAuthentication(MktConnection $data): void

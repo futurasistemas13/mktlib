@@ -22,7 +22,7 @@ class Product{
     private String $category_id = "";
 
     /**
-     * @Assert\PositiveOrZero
+     * @Assert\Positive(groups={"non_grid", "insert"})
      */
     private float $price = 0;
 
