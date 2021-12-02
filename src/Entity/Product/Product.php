@@ -6,7 +6,7 @@ use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeMoeda;
 use FuturaMkt\Type\Product\TypeProductCondition;
 use FuturaMkt\Type\TypeStatus;
-use FuturaMkt\Constraint as MyAssert;
+use FuturaMkt\Constraints as MyAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Product{
@@ -39,7 +39,7 @@ class Product{
      * @Assert\All({
      *    @Assert\Type("FuturaMkt\Entity\Product\AttributeGroup")
      * })
-     * @MyAssert\HasAttributeValueValidator(attrname="name")
+     * @MyAssert\HasAttributeValue(attrname="name")
      * @Assert\Valid
      */
     private array $attributeGroups;

@@ -1,6 +1,6 @@
 <?php
 
-namespace FuturaMkt\Constraint;
+namespace FuturaMkt\Constraints;
 
 use Exception;
 use Symfony\Component\Validator\Constraint;

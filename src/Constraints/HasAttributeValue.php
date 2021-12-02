@@ -1,6 +1,8 @@
 <?php
 
-namespace FuturaMkt\Constraint;
+namespace FuturaMkt\Constraints;
+
+use Symfony\Component\Validator\Constraint;
 
 /**
  * @Annotation
@@ -10,7 +12,7 @@ namespace FuturaMkt\Constraint;
  *
  * @api
  */
-class HasAttributeValue
+class HasAttributeValue extends Constraint
 {
 
     public String $attrname = '';
