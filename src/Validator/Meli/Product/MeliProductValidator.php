@@ -4,15 +4,18 @@ namespace FuturaMkt\Validator\Meli\Product;
 
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Validator\ProductValidator;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Validation;
+use FuturaMkt\RootConstants;
 
 class MeliProductValidator extends ProductValidator
 {
 
     public function validate(Product $product): array
     {
-        return parent::validate($product);
+        $group = 'default';
+        if($product->hasMktPlaceId()){
+            $group = 'insert';
+        }
+        return parent::validateProduct($product, RootConstants::getPathDir() . '/Config/Validator/Product/Meli/MeliProductValidator.yaml', $group);
     }
 
 }

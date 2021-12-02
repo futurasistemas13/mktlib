@@ -3,9 +3,5 @@ FuturaMkt\Entity\Product\Product:
     category_id:
       - NotBlank: ~
       - NotNull: ~
-
-FuturaMkt\Entity\Product\AttributeGroup:
-  properties:
     attributeGroups:
-      - HasAttributeName:
-          - attrName: "listing_type_id"
+      - FuturaMkt\Constraints\HasAttributeName: {attrName: "listing_type_id", groups: [insert]}

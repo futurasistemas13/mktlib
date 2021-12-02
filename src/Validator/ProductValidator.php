@@ -7,9 +7,9 @@ use FuturaMkt\RootConstants;
 
 class ProductValidator extends BaseValidator {
 
-    public function validate(Product $product): array
+    public function validateProduct(Product $product, $validatorFile, $group): array
     {
-        return $this->validateBase($product, RootConstants::getPathDir() . '/Config/Validator/Product/Meli/MeliProductValidator.yaml');
+        return $this->validateBase($product, $validatorFile, $group);
     }
 
 }
