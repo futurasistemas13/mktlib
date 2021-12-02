@@ -16,11 +16,11 @@ class HasAttributeNameValidator extends ConstraintValidator
     public function validate(mixed $value, Constraint $constraint): bool
     {
         if (!$constraint instanceof HasAttributeName) {
-            throw new Exception($constraint, __NAMESPACE__ . '\HasAttributeValue');
+            throw new Exception($constraint, __NAMESPACE__ . '\HasAttributeName');
         }
 
         if (is_array($value)){
-            if($value instanceof AttributeGroup){
+            if($value[array_key_first($value)] instanceof AttributeGroup){
                 foreach ($value as $attrGroupList){
                     return $this->validateAttr($attrGroupList->getAttribute(), $constraint);
                 }

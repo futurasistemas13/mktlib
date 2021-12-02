@@ -7,5 +7,5 @@ FuturaMkt\Entity\Product\Product:
 FuturaMkt\Entity\Product\AttributeGroup:
   properties:
     attributeGroups:
-      - All:
-          -
+      - HasAttributeName:
+          - attrName: "listing_type_id"
