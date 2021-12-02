@@ -2,15 +2,17 @@
 
 namespace FuturaMkt\Constraint;
 
-use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
-
-class HasAttributeValue extends ConstraintValidator
+/**
+ * @Annotation
+ * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
+ *
+ * @author Afranio Martins <afranioce@gmail.com>
+ *
+ * @api
+ */
+class HasAttributeValue
 {
 
-    public function validate(mixed $value, Constraint $constraint)
-    {
-        echo 'teste';
-        return true;
-    }
+    public String $attrname = '';
+
 }
