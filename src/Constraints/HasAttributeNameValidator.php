@@ -7,7 +7,7 @@ use FuturaMkt\Entity\Product\AttributeGroup;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class HasAttributeValueValidator extends ConstraintValidator
+class HasAttributeNameValidator extends ConstraintValidator
 {
 
     /**
@@ -15,35 +15,36 @@ class HasAttributeValueValidator extends ConstraintValidator
      */
     public function validate(mixed $value, Constraint $constraint): bool
     {
-        if (!$constraint instanceof HasAttributeValue) {
+        if (!$constraint instanceof HasAttributeName) {
             throw new Exception($constraint, __NAMESPACE__ . '\HasAttributeValue');
         }
 
         if (is_array($value)){
-            foreach ($value as $attrGroupList){
-                if($attrGroupList instanceof AttributeGroup){
-                    foreach($attrGroupList as $attr){
-                        return $this->validateAttr($attr, $constraint);
-                    }
-                }else{
-                    return $this->validateAttr($value, $constraint);
+            if($value instanceof AttributeGroup){
+                foreach ($value as $attrGroupList){
+                    return $this->validateAttr($attrGroupList->getAttribute(), $constraint);
                 }
-
+            }else{
+                return $this->validateAttr($value, $constraint);
             }
         }
 
-        return true;
+        $this->context->addViolation(
+            $constraint->message,
+            array('{{ attrValue }}' => $constraint->attrName)
+        );
+        return false;
     }
 
     private function validateAttr($attributeList, Constraint $constraint): bool{
         foreach ($attributeList as $attr){
-            if($attr->getName() == $constraint->attrValue){
+            if($attr->getName() == $constraint->attrName){
                 return true;
             }
         }
         $this->context->addViolation(
             $constraint->message,
-            array('{{ attrValue }}' => $constraint->attrValue)
+            array('{{ attrValue }}' => $constraint->attrName)
         );
         return false;
     }

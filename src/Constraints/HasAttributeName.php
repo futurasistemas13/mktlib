@@ -12,10 +12,10 @@ use Symfony\Component\Validator\Constraint;
  *
  * @api
  */
-class HasAttributeValue extends Constraint
+class HasAttributeName extends Constraint
 {
 
-    public String $attrValue = '';
+    public String $attrName = '';
     public String $message   = 'the attribute name does not have a value:  {{ attrValue }}';
 
 }
