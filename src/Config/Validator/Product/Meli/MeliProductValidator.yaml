@@ -1,3 +1,11 @@
 FuturaMkt\Entity\Product\Product:
-  description:
-    - NotBlank: ~
+  properties:
+    category_id:
+      - NotBlank: ~
+      - NotNull: ~
+
+FuturaMkt\Entity\Product\AttributeGroup:
+  properties:
+    attributeGroups:
+      - All:
+          -

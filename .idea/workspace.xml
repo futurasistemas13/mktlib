@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="556eb81b-647d-406b-bd25-b6103ae0c35c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/RootConstants.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Constraint/HasAttributeValue.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Config/Validator/Product/Meli/MeliProductValidator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/Validator/Product/Meli/MeliProductValidator.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/AttributeGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/AttributeGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Validator/BaseValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/BaseValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/Meli/Product/MeliProductValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/Meli/Product/MeliProductValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/ProductValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/ProductValidator.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +78,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../_lixo/comptest" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -115,7 +120,7 @@
       <workItem from="1637933220065" duration="33000" />
       <workItem from="1637944967711" duration="22211000" />
       <workItem from="1638214504323" duration="29549000" />
-      <workItem from="1638360872982" duration="20318000" />
+      <workItem from="1638360872982" duration="25173000" />
     </task>
     <servers />
   </component>

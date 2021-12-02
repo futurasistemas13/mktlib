@@ -12,11 +12,6 @@ class MeliProductValidator extends ProductValidator
 
     public function validate(Product $product): array
     {
-        $teste = 1;
-
-        $constraint = new Assert\Collection([
-
-        ]);
         return parent::validate($product);
     }
 

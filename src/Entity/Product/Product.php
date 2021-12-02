@@ -37,6 +37,10 @@ class Product{
     /**
      * @Assert\All({
      *    @Assert\Type("FuturaMkt\Entity\Product\AttributeGroup")
+     *    @MyAssert\HasAttributeValue(
+     *      fieldName="teste"
+     *      value="teste"
+     *    )
      * })
      * @Assert\Valid
      */

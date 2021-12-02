@@ -9,20 +9,24 @@ class BaseValidator
 {
     /**
      * @param mixed $entity
+     * @param string $yamlPathValidator
      * @return array
      */
-    protected function validateBase(mixed $entity): array
+    protected function validateBase(mixed $entity, string $yamlPathValidator = ''): array
     {
         $validatorObject = Validation::createValidatorBuilder()
-            ->enableAnnotationMapping()
-            ->addDefaultDoctrineAnnotationReader()
-            ->addYamlMapping(RootConstants::getPathDir() . 'Config/Validator/Product/Meli/MeliProductValidator.yaml')
-            ->getValidator();
-        $errorList = $validatorObject->validate($entity);
+                            ->enableAnnotationMapping()
+                            ->addDefaultDoctrineAnnotationReader();
 
-        $fieldError = array();
+        if($yamlPathValidator != ''){
+            $validatorObject->addYamlMapping($yamlPathValidator);
+        }
+        $validatorObject = $validatorObject->getValidator();
+        $errorList       = $validatorObject->validate($entity);
+        $fieldError      = array();
+
         foreach ($errorList as $error){
-                $fieldError[$error->getPropertyPath()] = $error->getMessage();
+            $fieldError[$error->getPropertyPath()] = $error->getMessage();
         }
         return $fieldError;
     }
