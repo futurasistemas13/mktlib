@@ -67,7 +67,7 @@ class ProductTransfer{
         //upgrading the attributes...
         if(isset($meliProduct['attributes'])){
             foreach($meliProduct['attributes'] as $attr){
-                $product->setAttribute(TypeAttribute::Datasheet,  $attr['id'], $attr['value_name']);
+                $product->setAttribute(TypeAttribute::Datasheet, $attr['id'], $attr['value_name']);
             }
         }
         //Upgrading the default attributes

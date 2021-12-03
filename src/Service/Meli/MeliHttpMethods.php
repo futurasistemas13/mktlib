@@ -37,15 +37,18 @@ class MeliHttpMethods{
      * @throws GuzzleException
      * @throws HttpMktException
      */
-    public function requestBodyAuthentication(TypeHttp $method, String $url, array $dataJson){
+    public function requestWithAuthentication(TypeHttp $method, String $url, array $dataJson = array()){
         try{
-            $response = $this->clientHttp->request($method->value, $url, [
-                'headers' => [
-                    'Content-Type'   => 'application/json',
-                    'Authorization'  => 'Bearer ' . $this->getAccessToken()
-                ],
-                'body' => json_encode($dataJson)
+            $cliParams['headers'] = array([
+                'Content-Type'   => 'application/json',
+                'Authorization'  => 'Bearer ' . $this->getAccessToken()
             ]);
+
+            if(!($method === TypeHttp::GET) && (count($dataJson) > 0)){
+                $cliParams['body'] = json_encode($dataJson);
+            }
+
+            $response = $this->clientHttp->request($method->value, $url, [$cliParams]);
 
             $arrayConvert = json_decode($response->getBody()->getContents(), true);
             if ((is_array($arrayConvert)) && (($response->getStatusCode() >= 200) && ($response->getStatusCode() < 300)) ){

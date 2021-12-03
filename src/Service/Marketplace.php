@@ -5,6 +5,7 @@ namespace FuturaMkt\Service;
 use Exception;
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Entity\Authentication\MktConnection;
+use FuturaMkt\Exception\ValidationException;
 use FuturaMkt\Type\TypeMarketplaces;
 use FuturaMkt\Validator\ValidatorMarketplace;
 
@@ -19,14 +20,21 @@ class Marketplace implements iMarketplace{
     public function setAuthentication(MktConnection $data): void {}
 
     /**
+     * @param Product $product
+     * @return Product
+     * @throws ValidationException
      * @throws Exception
      */
     public function setProduct(Product $product): Product{
         $ProductValidator = new ValidatorMarketplace();
         $errors           = $ProductValidator->validateProduct($this->marketplace, $product);
         if (count($errors) > 0) {
-            throw new Exception(json_encode($errors));
+            throw new ValidationException($errors);
         }else return $product;
 
+    }
+
+    public function getCategoriesAttributes($category_id){
+        echo 'teste';
     }
 }

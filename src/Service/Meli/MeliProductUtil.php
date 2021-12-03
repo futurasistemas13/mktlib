@@ -22,8 +22,9 @@ class MeliProductUtil {
 
     /**
      * @param Product $product
-     * @throws HttpMktException
+     * @return Product
      * @throws GuzzleException
+     * @throws HttpMktException
      */
     function setProduct(Product $product): Product{
         $isUpdating  = $product->hasMktPlaceId();
@@ -36,19 +37,35 @@ class MeliProductUtil {
         }
         $productJson = ProductTransfer::productObjectToMeli($product);
 
-        $responseProduct = $this->meliHttp->requestBodyAuthentication(
+        $responseProduct = $this->meliHttp->requestWithAuthentication(
             $methodProd,
-            FuncUtils::buildEndPoint(MeliConstants::endPoint,TypeMeliEndPoints::Product->value, $paramsProd),
+            FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::Product->value, $paramsProd),
             $productJson
         );
         ProductTransfer::meliToProductObject($responseProduct, $product);
 
-        $responseDescription = $this->meliHttp->requestBodyAuthentication(
-            $methodProd,
-            FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
-            array('plain_text' => $product->getDescription())
-        );
+        if($product->getDescription() !== ""){
+            $this->meliHttp->requestWithAuthentication(
+                $methodProd,
+                FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::ProductDescription->value, [$product->getMktPlaceId()]),
+                array('plain_text' => $product->getDescription())
+            );
+        }
+
         return $product;
+    }
+
+    //ProductAttributes
+
+    /**
+     * @throws GuzzleException
+     * @throws HttpMktException
+     */
+    function getCategoriesAttributes($category_id){
+        $responseAttribute = $this->meliHttp->requestWithAuthentication(
+            TypeHttp::GET,
+            FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::ProductAttributes->value, [$category_id])
+        );
     }
 
 }

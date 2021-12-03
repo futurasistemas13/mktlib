@@ -2,12 +2,14 @@
 
 namespace FuturaMkt\Entity\Product;
 
-use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Type\TypeMoeda;
-use FuturaMkt\Type\Product\TypeProductCondition;
+
 use FuturaMkt\Type\TypeStatus;
+use FuturaMkt\Type\TypeAttribute;
 use FuturaMkt\Constraints as MyAssert;
-use Symfony\Component\Validator\Constraints as Assert;
+use FuturaMkt\Type\Product\TypeProductCondition;
+use JsonSchema\Validator;
+use Symfony\Component\Validator\Constraint as Assert;
 
 class Product{
 
