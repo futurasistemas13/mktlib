@@ -3,4 +3,5 @@ PHP library to communicate with marketplaces installable with composer
 
 
 # How to install
-> composer install futuralibs/mktlib
+<pre><code>composer install futuralibs/mktlib
+</code></pre>
