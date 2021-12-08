@@ -4,6 +4,7 @@ namespace FuturaMkt\Service\Meli;
 
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Exception\HttpMktException;
+use FuturaMkt\Transfer\Meli\DataSheetTransfer;
 use FuturaMkt\Transfer\Meli\ProductTransfer;
 use FuturaMkt\Type\Http\TypeHttp;
 use FuturaMkt\Type\Meli\TypeMeliEndPoints;
@@ -61,11 +62,19 @@ class MeliProductUtil {
      * @throws GuzzleException
      * @throws HttpMktException
      */
-    function getCategoriesAttributes($category_id){
+    function getCategoriesAttributes($category_id): array{
         $responseAttribute = $this->meliHttp->requestWithAuthentication(
             TypeHttp::GET,
             FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::ProductAttributes->value, [$category_id])
         );
+        $dsTransfer = new DataSheetTransfer();
+
+        $arrayObj = $dsTransfer->MeliToDsObjectList($responseAttribute);
+
+        $return = array();
+        foreach($arrayObj  as $obj){
+            $return[] = $dsTransfer->DsToArray($obj);
+        }
     }
 
 }

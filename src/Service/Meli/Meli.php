@@ -39,7 +39,7 @@ class Meli extends Marketplace{
     }
 
     public function getCategoriesAttributes($category_id){
-        echo 'teste'; 
+        return $this->productUtil->getCategoriesAttributes($category_id);
     }
 
 }

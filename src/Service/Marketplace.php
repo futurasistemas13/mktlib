@@ -31,10 +31,5 @@ class Marketplace implements iMarketplace{
         if (count($errors) > 0) {
             throw new ValidationException($errors);
         }else return $product;
-
-    }
-
-    public function getCategoriesAttributes($category_id){
-        echo 'teste';
     }
 }

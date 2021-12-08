@@ -6,6 +6,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use FuturaMkt\Exception\HttpMktException;
 use GuzzleHttp\Exception\GuzzleException;
+use Futuralibs\Futurautils\Http\ResponseCodes;
+use Futuralibs\Futurautils\Type\Http\TypeHttpCode;
 
 class MeliHttpMethods{
 
@@ -51,7 +53,7 @@ class MeliHttpMethods{
             $response = $this->clientHttp->request($method->value, $url, [$cliParams]);
 
             $arrayConvert = json_decode($response->getBody()->getContents(), true);
-            if ((is_array($arrayConvert)) && (($response->getStatusCode() >= 200) && ($response->getStatusCode() < 300)) ){
+            if ((is_array($arrayConvert)) && (ResponseCodes::isSuccessful($response->getStatusCode())) ){
                 return $arrayConvert;
             }else{
                 throw new HttpMktException($response->getBody()->getContents(), $response->getStatusCode());
@@ -83,7 +85,7 @@ class MeliHttpMethods{
             $response = $this->clientHttp->request($method->value, $url, $cliParams);
 
             $arrayConvert = json_decode($response->getBody()->getContents(), true);
-            if ((is_array($arrayConvert)) && (($response->getStatusCode() >= 200) && ($response->getStatusCode() < 300)) ){
+            if ((is_array($arrayConvert)) && (ResponseCodes::isSuccessful($response->getStatusCode())) ){
                 return $arrayConvert;
             }else{
                 throw new HttpMktException($response->getBody()->getContents(), $response->getStatusCode());
