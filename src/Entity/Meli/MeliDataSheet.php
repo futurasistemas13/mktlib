@@ -4,16 +4,46 @@ namespace FuturaMkt\Entity\Meli;
 
 use FuturaMkt\Entity\Meli\MeliDataSheetValue;
 use Futuralibs\Futurautils\Trait\JsonSerializable\JsonWithOutNull;
-use FuturaMkt\Entity\Product\Attribute;
+use JsonSerializable;
+use Serializable;
+use Futuralibs\Futurautils\Type\TypeAttributeIgnore;
+use FuturaMkt\Entity\Meli\MeliDataSheet as MeliMeliDataSheet;
 
-class MeliDataSheet extends Attribute{
+class MeliDataSheet implements JsonSerializable{
+
   use JsonWithOutNull;
 
+  #[Serializable]
   private string $fieldId;
+
+  #[Serializable]
   private string $fieldName;  
+
+  #[Serializable]
   private array  $valueList;
+
+  #[Serializable]
   private array  $allowed_units;
-  private string $lint = '';
+
+  //It is a small explanation about what the field does
+  #[Serializable]
+  private string $hint = '';
+
+  //It is a TIP to use on the field
+  #[Serializable]
+  private string $toolTip = '';
+
+  #[Serializable]
+  private bool $attributeVariation = false;
+
+  #[Serializable]
+  private bool $fixed = false;
+
+  #[Serializable]
+  private bool $multiValued = false;
+
+  #[Serializable]
+  private bool $required = false;
 
   public function __construct(String $fieldId, String $fieldName = '')
   {
@@ -89,21 +119,21 @@ class MeliDataSheet extends Attribute{
   }
 
   /**
-   * Get the value of lint
+   * Get the value of hint
    */ 
-  public function getLint()
+  public function getHint()
   {
-    return $this->lint;
+    return $this->hint;
   }
 
   /**
-   * Set the value of lint
+   * Set the value of hint
    *
    * @return  self
    */ 
-  public function setLint($lint)
+  public function setHint($hint)
   {
-    $this->lint = $lint;
+    $this->hint = $hint;
 
     return $this;
   }
@@ -124,6 +154,106 @@ class MeliDataSheet extends Attribute{
   public function setFieldId($fieldId)
   {
     $this->fieldId = $fieldId;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of attributeVariation
+   */ 
+  public function getAttributeVariation(): bool
+  {
+    return $this->attributeVariation;
+  }
+
+  /**
+   * Set the value of attributeVariation
+   *
+   * @return  MeliMeliDataSheet
+   */ 
+  public function setAttributeVariation($attributeVariation): MeliMeliDataSheet
+  {
+    $this->attributeVariation = $attributeVariation;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of fixed
+   */ 
+  public function getFixed(): bool
+  {
+    return $this->fixed;
+  }
+
+  /**
+   * Set the value of fixed
+   *
+   * @return  MeliMeliDataSheet
+   */ 
+  public function setFixed($fixed): MeliMeliDataSheet
+  {
+    $this->fixed = $fixed;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of multiValued
+   */ 
+  public function getMultiValued(): bool
+  {
+    return $this->multiValued;
+  }
+
+  /**
+   * Set the value of multiValued
+   *
+   * @return  MeliMeliDataSheet
+   */ 
+  public function setMultiValued($multiValued): MeliMeliDataSheet
+  {
+    $this->multiValued = $multiValued;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of required
+   */ 
+  public function getRequired(): bool
+  {
+    return $this->required;
+  }
+
+  /**
+   * Set the value of required
+   *
+   * @return  MeliMeliDataSheet
+   */ 
+  public function setRequired($required): MeliMeliDataSheet
+  {
+    $this->required = $required;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of toolTip
+   */ 
+  public function getToolTip(): string
+  {
+    return $this->toolTip;
+  }
+
+  /**
+   * Set the value of toolTip
+   *
+   * @return  MeliMeliDataSheet
+   */ 
+  public function setToolTip($toolTip): MeliMeliDataSheet
+  {
+    $this->toolTip = $toolTip;
 
     return $this;
   }

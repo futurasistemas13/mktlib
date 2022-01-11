@@ -67,14 +67,16 @@ class MeliProductUtil {
             TypeHttp::GET,
             FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::ProductAttributes->value, [$category_id])
         );
+
         $dsTransfer = new DataSheetTransfer();
 
         $arrayObj = $dsTransfer->MeliToDsObjectList($responseAttribute);
 
         $return = array();
         foreach($arrayObj  as $obj){
-            $return[] = $dsTransfer->DsToArray($obj);
+            $return[] = $obj->jsonSerialize($obj);
         }
+        return $return;
     }
 
 }

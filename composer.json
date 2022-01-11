@@ -1,4 +1,6 @@
 {
+    "minimum-stability": "dev",
+    "prefer-stable": false,
     "name": "futuralibs/mktlib",
     "description": "Biblioteca desenvolvida em PHP para integração com marketplaces",
     "type": "library",
@@ -17,6 +19,7 @@
         "guzzlehttp/guzzle": "^7.4",
         "symfony/validator": "^6.0",
         "symfony/cache": "^6.0",
-        "symfony/yaml": "^6.0"
+        "symfony/yaml": "^6.0",
+        "futuralibs/futurautils": "@dev"
     }
 }

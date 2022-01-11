@@ -2,10 +2,17 @@
 
 namespace FuturaMkt\Entity\Meli;
 
+use Serializable;
+
 class MeliDataSheetValue{
 
+  #[Serializable]
   private  String $value;  
+
+  #[Serializable]
   private  String $mktCode;
+
+  #[Serializable]
   private  bool $defaultValue;
 
   public function __construct(string $value = '', string $mktCode = '', bool $defaultValue = false)
