@@ -32,4 +32,18 @@ class Marketplace implements iMarketplace{
             throw new ValidationException($errors);
         }else return $product;
     }
+
+    /**
+     * @param Product $product
+     * @return Product
+     * @throws ValidationException
+     * @throws Exception
+     */
+    public function setProductSimple(Product $product): Product{
+        $ProductValidator = new ValidatorMarketplace();
+        $errors           = $ProductValidator->validateProduct($this->marketplace, $product);
+        if (count($errors) > 0) {
+            throw new ValidationException($errors);
+        }else return $product;
+    }
 }

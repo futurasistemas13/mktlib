@@ -7,4 +7,5 @@ enum TypeMeliEndPoints: String {
     case Product             = '/items/{meliId}/';
     case AuthToken           = '/oauth/token/';
     case ProductAttributes   = '/categories/{category_id}/technical_specs/input';
+    case ListingTypes        = '/sites/MLB/listing_types/';
 }

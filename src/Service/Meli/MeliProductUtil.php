@@ -2,6 +2,7 @@
 
 namespace FuturaMkt\Service\Meli;
 
+use Exception;
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Transfer\Meli\DataSheetTransfer;
@@ -11,6 +12,7 @@ use FuturaMkt\Type\Meli\TypeMeliEndPoints;
 use FuturaMkt\Utils\FuncUtils;
 use GuzzleHttp\Exception\GuzzleException;
 use FuturaMkt\Utils\Meli\MeliConstants;
+use FuturaMkt\Transfer\Meli\ProductListingTypeTransfer;
 
 class MeliProductUtil {
 
@@ -20,6 +22,30 @@ class MeliProductUtil {
     {
         $this->meliHttp = $httpMethods;
     }
+
+    /**
+     * @param Product $product
+     * @return Product
+     * @throws GuzzleException
+     * @throws HttpMktException
+     */
+    function setProductSimple(Product $product): Product{
+        if (!$product->hasMktPlaceId()){
+            throw new Exception('Atualização simples de produto apenas disponivel para atualizações');
+        }
+ 
+        $productJson = ProductTransfer::productSimpleToMeli($product);
+
+        $responseProduct = $this->meliHttp->requestWithAuthentication(
+            TypeHttp::PUT,
+            FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::Product->value, array($product->getMktPlaceId())),
+            $productJson
+        );
+        ProductTransfer::meliToProductObject($responseProduct, $product);
+
+        return $product;
+    }
+
 
     /**
      * @param Product $product
@@ -56,8 +82,6 @@ class MeliProductUtil {
         return $product;
     }
 
-    //ProductAttributes
-
     /**
      * @throws GuzzleException
      * @throws HttpMktException
@@ -69,14 +93,21 @@ class MeliProductUtil {
         );
 
         $dsTransfer = new DataSheetTransfer();
+        $arrayObj   = $dsTransfer->MeliToDsObjectList($responseAttribute);
 
-        $arrayObj = $dsTransfer->MeliToDsObjectList($responseAttribute);
+        return $arrayObj;
+    }
 
-        $return = array();
-        foreach($arrayObj  as $obj){
-            $return[] = $obj->jsonSerialize($obj);
-        }
-        return $return;
+    function getProductListingType(): array{
+        $responseAttribute = $this->meliHttp->requestWithAuthentication(
+            TypeHttp::GET,
+            FuncUtils::buildEndPoint(MeliConstants::endPoint, TypeMeliEndPoints::ListingTypes->value)
+        );
+
+        $transferLT   =  new ProductListingTypeTransfer();
+        $listingTypes =  $transferLT->MeliToObjectList($responseAttribute);
+
+        return $listingTypes;
     }
 
 }

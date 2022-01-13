@@ -20,13 +20,15 @@ class MeliFuncUtils{
         return $return;
     }
 
-    public static function convertDefaultAttr(array $attributes): array
+    public static function convertDefaultAttr(array $attributes, array $attributesIgnore = array()): array
     {
         $return = array();
         foreach($attributes as $attr){
-            $aux = array();
-            $aux[$attr->getName()] = $attr->getValue();
-            $return = array_merge($return, $aux);
+            if(!in_array($attr->getName(), $attributesIgnore)){
+                $aux = array();
+                $aux[$attr->getName()] = $attr->getValue();
+                $return = array_merge($return, $aux);
+            }
         }
         return $return;
     }
@@ -51,10 +53,14 @@ class MeliFuncUtils{
         return $return;
     }
 
-    public static function convertVariations(array $variations): array
+    public static function convertVariations(array $variations, bool $justEnabledVar = true): array
     {
         $result = array();
         foreach($variations as $attr_variation){
+
+            if(($justEnabledVar) && ($attr_variation->getStatus() == TypeStatus::Inactive)){
+                continue;
+            }
 
             $comb = array();
             foreach($attr_variation->getAttributes() as $attr){

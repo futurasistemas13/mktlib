@@ -9,5 +9,6 @@ interface iMarketplace{
 
     public function setProduct(Product $product): Product;
     public function setAuthentication(MktConnection $data): void;
+    public function setProductSimple(Product $product): Product;
 
 }

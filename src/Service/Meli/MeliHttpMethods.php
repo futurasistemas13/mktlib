@@ -41,16 +41,16 @@ class MeliHttpMethods{
      */
     public function requestWithAuthentication(TypeHttp $method, String $url, array $dataJson = array()){
         try{
-            $cliParams['headers'] = array([
+            $cliParams['headers'] = array(
                 'Content-Type'   => 'application/json',
                 'Authorization'  => 'Bearer ' . $this->getAccessToken()
-            ]);
+            );
 
             if(!($method === TypeHttp::GET) && (count($dataJson) > 0)){
                 $cliParams['body'] = json_encode($dataJson);
             }
 
-            $response = $this->clientHttp->request($method->value, $url, [$cliParams]);
+            $response = $this->clientHttp->request($method->value, $url, $cliParams);
 
             $arrayConvert = json_decode($response->getBody()->getContents(), true);
             if ((is_array($arrayConvert)) && (ResponseCodes::isSuccessful($response->getStatusCode())) ){

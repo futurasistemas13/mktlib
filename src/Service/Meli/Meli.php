@@ -38,8 +38,23 @@ class Meli extends Marketplace{
         return $this->productUtil->setProduct($product);
     }
 
+    /**
+     * @param Product $product
+     * @return Product
+     * @throws ValidationException
+     * @throws Exception
+     */
+    public function setProductSimple(Product $product): Product{
+        parent::setProduct($product);
+        return $this->productUtil->setProductSimple($product);
+    }
+
     public function getCategoriesAttributes($category_id){
         return $this->productUtil->getCategoriesAttributes($category_id);
+    }
+
+    public function getProductListingType(): array{
+        return $this->productUtil->getProductListingType();
     }
 
 }

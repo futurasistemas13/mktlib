@@ -6,10 +6,8 @@ use FuturaMkt\Type\TypeMoeda;
 
 use FuturaMkt\Type\TypeStatus;
 use FuturaMkt\Type\TypeAttribute;
-use FuturaMkt\Constraints as MyAssert;
 use FuturaMkt\Type\Product\TypeProductCondition;
-use JsonSchema\Validator;
-use Symfony\Component\Validator\Constraint as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class Product{
 
@@ -32,6 +30,11 @@ class Product{
      * @Assert\PositiveOrZero
      */
     private Int $quantity = 0;
+
+    /**
+     * @Assert\PositiveOrZero
+     */
+    private Int $soldQuantity = 0;
 
     private TypeMoeda $moeda = TypeMoeda::BRL;
 
@@ -250,20 +253,42 @@ class Product{
         return $this;
     }
 
+    /**
+     * @param TypeAttribute $group
+     * @param string $field
+     * @return array
+     */
+    public function getAttributesValue(TypeAttribute $group, string $field): string
+    {
+        $attributes = $this->getAttributes($group);
+        $return = array_filter($attributes, function($p) use ($field){
+            return $p->getName() == $field;
+        }, ARRAY_FILTER_USE_BOTH);
 
+        if(count($return) > 0){
+            return $return[0]->getValue();
+        }else{
+            return '';
+        }
+        
+    }
 
     /**
      * @param TypeAttribute $group
      * @return array
      */
     public function getAttributes(TypeAttribute $group): array
-    {
-        foreach ($this->attributeGroups as $attr){
-            if($attr->getAttributeGroup() == $group){
-                return $attr->getAttribute();
-            }
+    {        
+        $return = array_filter($this->attributeGroups, function($p) use ($group){
+            return $p->getAttributeGroup() === $group;
+        }, ARRAY_FILTER_USE_BOTH);
+
+        if(count($return) > 0){
+            return $return[array_key_last($return)]->getAttribute();
+        }else{
+            return array();
         }
-        return array();
+        
     }
 
     /**
@@ -291,11 +316,18 @@ class Product{
     /**
      * @return array
      */
-    public function getAllVariationImages(): array
+    public function getAllVariationImages(bool $justEnabledFields = false): array
     {
         $return = array();
         foreach ($this->getVariationList() as $variate){
-            $return = array_merge_recursive($return, $variate->getProductImages());
+            if($justEnabledFields){
+                if(($variate->getStatus() == TypeStatus::Active)){
+                    $return = array_merge_recursive($return, $variate->getProductImages());
+                }
+            }else{
+                $return = array_merge_recursive($return, $variate->getProductImages());
+            }
+            
         }
         return $return;
     }
@@ -322,9 +354,16 @@ class Product{
     /**
      * @return array
      */
-    public function getVariationList(): array
+    public function getVariationList(bool $justActiveVariations = false): array
     {
-        return $this->variationList;
+        if($justActiveVariations){
+            return array_filter($this->variationList, function($p){
+                return $p->getStatus() == TypeStatus::Active;
+            }, ARRAY_FILTER_USE_BOTH);
+        }else{
+            return $this->variationList;
+        }
+        
     }
 
     /**
@@ -416,4 +455,24 @@ class Product{
     }
 
 
+
+    /**
+     * Get the value of soldQuantity
+     */ 
+    public function getSoldQuantity(): Int
+    {
+        return $this->soldQuantity;
+    }
+
+    /**
+     * Set the value of soldQuantity
+     *
+     * @return  Product
+     */ 
+    public function setSoldQuantity($soldQuantity): Product
+    {
+        $this->soldQuantity = $soldQuantity;
+
+        return $this;
+    }
 }

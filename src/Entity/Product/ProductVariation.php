@@ -3,6 +3,7 @@
 namespace FuturaMkt\Entity\Product;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use FuturaMkt\Type\TypeStatus;
 
 class ProductVariation
 {
@@ -33,6 +34,8 @@ class ProductVariation
      * @Assert\Valid
      */
     private array  $productImages;
+
+    private TypeStatus $status;
 
 
     public function __construct()
@@ -73,7 +76,12 @@ class ProductVariation
      */
     public function setQuantity(int $quantity): ProductVariation
     {
-        $this->quantity = $quantity;
+        if($quantity <= 0){
+            $this->quantity = 0;
+        }else{
+            $this->quantity = $quantity;
+        }
+        
         return $this;
     }
 
@@ -84,6 +92,25 @@ class ProductVariation
     {
         return $this->attributes;
     }
+
+    /**
+     * @return TypeStatus
+     */
+    public function getStatus(): TypeStatus
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param TypeStatus $status
+     * @return ProductVariation
+     */
+    public function setStatus(TypeStatus $status): ProductVariation
+    {
+        $this->status = $status;
+        return $this;
+
+    }    
 
     /**
      * @param String $name
