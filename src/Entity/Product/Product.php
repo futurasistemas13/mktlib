@@ -302,7 +302,18 @@ class Product{
     {
         foreach ($this->attributeGroups as $attr){
             if($attr->getAttributeGroup() == $group){
-                $attr->setAttribute(new Attribute($attrName, $attrValue));
+
+                $return = array_filter($attr->getAttribute($group), function($p) use ($attrName){
+                    return $p->getName() === $attrName;
+                }, ARRAY_FILTER_USE_BOTH);
+
+                if(count($return) > 0){
+                    $return[array_key_last($return)]->setValue($attrValue);
+                }else{
+                    if($addNotExists){
+                        $attr->setAttribute(new Attribute($attrName, $attrValue));
+                    }                    
+                }                
                 return $this;
             }
         }

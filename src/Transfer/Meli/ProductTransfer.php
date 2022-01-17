@@ -138,15 +138,15 @@ class ProductTransfer{
         $product->setMktDataReturn($meliProduct);
 
         //upgrading the attributes...
-        if(isset($meliProduct['attributes'])){
+        /*if(isset($meliProduct['attributes'])){
             foreach($meliProduct['attributes'] as $attr){
-                $product->setAttribute(TypeAttribute::Datasheet, $attr['id'], $attr['value_name']);
+                $product->setAttribute(TypeAttribute::Datasheet, $attr['id'], $attr['value_name'], false);
             }
         }
         //Upgrading the default attributes
         foreach($meliProduct as $key => $attr){
             $product->setAttribute(TypeAttribute::DefaultAttributes,  $key, $attr, false);
-        }
+        }*/
 
         //Setting the code of the image on meli...
         if ($product->hasVariation()){
