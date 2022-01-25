@@ -5,6 +5,7 @@ namespace FuturaMkt\Utils\Meli;
 use FuturaMkt\Type\TypePeriodDate;
 use FuturaMkt\Type\Product\TypeWarranty;
 use FuturaMkt\Type\TypeStatus;
+use FuturaMkt\Type\Customer\TypeAddressState;
 
 class MeliConstants{
 
@@ -49,5 +50,16 @@ class MeliConstants{
             TypePeriodDate::Year       => strval($period) . ' anos',
         };
     }
+
+    public static function getStatusTypeFromInitial($initial): TypeAddressState
+    {
+        foreach(TypeAddressState::cases() as $case){
+            if(strtoupper($case->value) == strtoupper($initial)){
+                return $case;
+            }
+        }
+        return null;
+    }
+    
 
 }

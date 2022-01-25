@@ -5,3 +5,10 @@ FuturaMkt\Entity\Product\Product:
       - NotNull: ~
     attributeGroups:
       - FuturaMkt\Constraints\HasAttributeName: {attrName: "listing_type_id", groups: [insert]}
+
+
+FuturaMkt\Entity\Product\ProductVariation:
+    properties:
+      sku:
+        - NotBlank: ~
+        - NotNull: ~

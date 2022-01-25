@@ -7,6 +7,9 @@ use FuturaMkt\Type\TypeStatus;
 
 class ProductVariation
 {
+
+    private string $sku = '';
+
     private String $variationId = '';
 
     /**
@@ -163,4 +166,24 @@ class ProductVariation
         return $this;
     }
 
+
+    /**
+     * Get the value of sku
+     */ 
+    public function getSku(): string
+    {
+        return $this->sku;
+    }
+
+    /**
+     * Set the value of sku
+     *
+     * @return  ProductVariation
+     */ 
+    public function setSku(string $sku): ProductVariation
+    {
+        $this->sku = $sku;
+
+        return $this;
+    }
 }

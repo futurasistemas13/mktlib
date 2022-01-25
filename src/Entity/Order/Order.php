@@ -9,12 +9,24 @@ use FuturaMkt\Entity\Customer\Customer;
 class Order{
 
     private Customer  $buyer;
+
+    /**
+     * @Assert\All({
+     *    @Assert\Type("FuturaMkt\Entity\Order\OrderItem")
+     * })
+     * @Assert\Valid
+     */
     private array     $items;
     
     /**
      * @Assert\Positive
      */
     private float  $subTotal = 0;
+
+    /**
+     * @Assert\Positive
+     */
+    private float  $total = 0;
 
     /**
      * @Assert\NotBlank
@@ -260,6 +272,26 @@ class Order{
     public function setItem(OrderItem $items): Order
     {
         $this->items[] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of total
+     */ 
+    public function getTotal(): float
+    {
+        return $this->total;
+    }
+
+    /**
+     * Set the value of total
+     *
+     * @return  Order
+     */ 
+    public function setTotal(float $total): Order
+    {
+        $this->total = $total;
 
         return $this;
     }

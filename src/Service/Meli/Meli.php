@@ -4,6 +4,7 @@ namespace FuturaMkt\Service\Meli;
 
 use Exception;
 use FuturaMkt\Entity\Authentication\MktConnection;
+use FuturaMkt\Entity\Order\Order;
 use FuturaMkt\Entity\Product\Product;
 use FuturaMkt\Exception\HttpMktException;
 use FuturaMkt\Service\Marketplace;
@@ -21,6 +22,7 @@ class Meli extends Marketplace{
         $this->meliHttp     = new MeliHttpMethods();
         $this->meliAuth     = new MeliAuthUtil($this->meliHttp);
         $this->productUtil  = new MeliProductUtil($this->meliHttp);
+        $this->orderUtil    = new MeliOrderUtil($this->meliHttp);
         parent::setMarketplaceType(TypeMarketplaces::MercadoLivre);
     }
 
@@ -55,6 +57,11 @@ class Meli extends Marketplace{
 
     public function getProductListingType(): array{
         return $this->productUtil->getProductListingType();
+    }
+
+    public function getOrder(string $mktOrderId): Order
+    {
+        return $this->orderUtil->getOrder($mktOrderId);
     }
 
 }

@@ -19,7 +19,7 @@ class Address{
 
     private string $complement;
 
-    private string $neighbourhood;
+    private string $neighborhood;
 
     /**
      * Get the value of city
@@ -122,21 +122,21 @@ class Address{
     }
 
     /**
-     * Get the value of neighbourhood
+     * Get the value of neighborhood
      */ 
-    public function getNeighbourhood(): string 
+    public function getNeighborhood(): string 
     {
-        return $this->neighbourhood;
+        return $this->neighborhood;
     }
 
     /**
-     * Set the value of neighbourhood
+     * Set the value of neighborhood
      *
      * @return  Address
      */ 
-    public function setNeighbourhood(string $neighbourhood): Address
+    public function setNeighborhood(string $neighborhood): Address
     {
-        $this->neighbourhood = $neighbourhood;
+        $this->neighborhood = $neighborhood;
 
         return $this;
     }
@@ -147,6 +147,53 @@ class Address{
     public function getState(): TypeAddressState
     {
         return $this->state;
+    }
+
+    /**
+     * Get the value of state
+     */ 
+    public function getStateInitials(): TypeAddressState
+    {
+        return $this->state->value;
+    }
+
+
+    /**
+     * Get the value of state
+     */ 
+    public function getStateComplete(): string
+    {
+        $brStates = array(
+            'AC'=>'Acre',
+            'AL'=>'Alagoas',
+            'AP'=>'Amapá',
+            'AM'=>'Amazonas',
+            'BA'=>'Bahia',
+            'CE'=>'Ceará',
+            'DF'=>'Distrito Federal',
+            'ES'=>'Espírito Santo',
+            'GO'=>'Goiás',
+            'MA'=>'Maranhão',
+            'MT'=>'Mato Grosso',
+            'MS'=>'Mato Grosso do Sul',
+            'MG'=>'Minas Gerais',
+            'PA'=>'Pará',
+            'PB'=>'Paraíba',
+            'PR'=>'Paraná',
+            'PE'=>'Pernambuco',
+            'PI'=>'Piauí',
+            'RJ'=>'Rio de Janeiro',
+            'RN'=>'Rio Grande do Norte',
+            'RS'=>'Rio Grande do Sul',
+            'RO'=>'Rondônia',
+            'RR'=>'Roraima',
+            'SC'=>'Santa Catarina',
+            'SP'=>'São Paulo',
+            'SE'=>'Sergipe',
+            'TO'=>'Tocantins'
+        );
+
+        return $brStates[strtoupper($this->state->value)];
     }
 
     /**

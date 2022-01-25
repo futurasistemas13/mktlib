@@ -8,6 +8,8 @@ use FuturaMkt\Type\Customer\TypeCustomer;
 
 class Customer{
 
+    private string $mktCustomerId = '';
+
     private string $phone = '';
 
     private string $cellphone = '';
@@ -166,6 +168,26 @@ class Customer{
     public function setShippingAddress(Address $shippingAddress): Customer
     {
         $this->shippingAddress = $shippingAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of mktCustomerId
+     */ 
+    public function getMktCustomerId(): string
+    {
+        return $this->mktCustomerId;
+    }
+
+    /**
+     * Set the value of mktCustomerId
+     *
+     * @return  Customer
+     */ 
+    public function setMktCustomerId(string $mktCustomerId): Customer
+    {
+        $this->mktCustomerId = $mktCustomerId;
 
         return $this;
     }
